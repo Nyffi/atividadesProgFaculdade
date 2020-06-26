@@ -1,0 +1,130 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+//*** Declaracoes de tipos *****************************************************
+struct tProduto {
+    int codigo; // chave de ordenação
+    char descricao[30];
+};
+
+struct tNo {
+    struct tProduto dado;
+    struct tNo *prox;
+};
+
+void limpaTela() {
+    #ifdef _WIN32
+        system("cls");
+    #endif
+
+    #ifdef linux
+        system("clear");
+    #endif
+}
+
+void limpaBuffer() {
+    int c;
+
+    do {
+        c = getchar();
+    } while (c != '\n' && c != EOF);
+}
+
+void incluir(struct tNo **lst, struct tNo *novo) {
+    struct tNo *q = (*lst), *p;
+    if ((*lst) == NULL) { // Lista vazia
+        novo->prox = novo;
+        (*lst) = novo;
+    }
+    else { // meio
+        p = (*lst)->prox;
+        while ((novo->dado.codigo < (*lst)->dado.codigo) && (p->dado.codigo < novo->dado.codigo)) {
+            q = p;
+            p = p->prox;
+        }
+        p->prox = novo;
+        novo->prox = q;
+        if (novo->dado.codigo > (*lst)->dado.codigo)
+            (*lst) = novo;
+    }
+}
+
+struct tNo *consultar(struct tNo *lst, int codigo) {
+    struct tNo *p = lst, *q;
+
+    if (p == NULL)
+        return NULL;
+    do {
+        p = p->prox;
+        q = p->prox;
+        //printf("[DEBUG] p >> %d - %s\n[DEBUG] q >> %d - %s\n\n", p->dado.codigo, p->dado.descricao, q->dado.codigo, q->dado.descricao);
+        if (p->dado.codigo == codigo) {
+            if (q->dado.codigo == codigo) {
+                printf("Dois ou mais valores iguais foram encontrados\n\n");
+                do {
+                    //printf("[DEBUG] lst = %d - %s\n", lst->dado.codigo, lst->dado.descricao);
+                    printf("%d - %s\n", p->dado.codigo, p->dado.descricao);
+                    p = p->prox;
+                    //printf("[DEBUG] Valor p avançou\n");
+                    q = p->prox;
+                    //printf("[DEBUG] Valor q avançou\n");
+                    //printf("[DEBUG] Ponteiros atualizados\n");
+                } while(p->dado.codigo == codigo ); //&& q->dado.codigo != lst->dado.codigo
+                q->dado.codigo = q->dado.codigo - 1000000000;
+                return q;
+            }
+                return p;
+        }
+    } while (p != lst);
+    //printf("[DEBUG] Val nao encontrado\n");
+    return NULL;
+}
+
+
+//*** Inicializar **************************************************************
+void inicializar(struct tNo **lst) {
+    (*lst) = NULL;
+}
+
+int main() {
+  struct tNo *lista, *p;
+  int opcao, codigo;
+
+  inicializar(&lista);
+
+  p = malloc(sizeof(struct tNo)); // Criar um no
+  p->dado.codigo = 1;
+  strcpy(p->dado.descricao, "A");
+  incluir(&lista, p);
+
+  p = malloc(sizeof(struct tNo)); // Criar um no
+  p->dado.codigo = 1;
+  strcpy(p->dado.descricao, "B");
+  incluir(&lista, p);
+
+  p = malloc(sizeof(struct tNo)); // Criar um no
+  p->dado.codigo = 1;
+  strcpy(p->dado.descricao, "C");
+  incluir(&lista, p);
+
+  p = malloc(sizeof(struct tNo)); // Criar um no
+  p->dado.codigo = 4;
+  strcpy(p->dado.descricao, "D");
+  incluir(&lista, p);
+
+  p = malloc(sizeof(struct tNo)); // Criar um no
+  p->dado.codigo = 5;
+  strcpy(p->dado.descricao, "E");
+  incluir(&lista, p);
+
+  p = consultar(lista, 1);
+  if (p != NULL) {
+    if (p->dado.codigo >= 0)
+      printf("Encontrou: %s\n", p->dado.descricao);
+    else
+      p->dado.codigo = p->dado.codigo + 1000000000;
+  } else
+    printf("Codigo nao encontrado!\n");
+  return 0;
+}
