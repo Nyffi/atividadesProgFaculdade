@@ -1,0 +1,19 @@
+algoritmo questao3;
+// Síntese
+//  Objetivo:  Construir um algoritmo que receba a altura do degrau de uma escada e a altura que o usuário deseja alcançar subindo a escada, depois calcular e mosrtar quantos degraus o usuário deverá subir para atingir seu objetivo.
+//  Entrada : Altura do degrau de uma escada e altura que o usuário deseja alcançar.
+//  Saída   :	Quantos degraus o usuário deverá subir.
+
+
+principal
+	// Declarações
+	real altDegrau, altDesejada;
+	inteiro quantDegrau;
+	// Instruções
+	escreva ("Digite a altura do degrau: ");
+	leia (altDegrau);
+	escreva ("Digite a altura desejada: ");
+	leia (altDesejada);
+	quantDegrau = altDesejada / altDegrau;
+	escreva ("O usuário deve subir, aproximadamente, ", quantDegrau, " degraus.");
+fimPrincipal

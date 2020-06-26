@@ -1,0 +1,31 @@
+algoritmo questao4e8;
+// Síntese
+//  Objetivo:  Ler o nome e o sexo de uma pessoa e apresente como saída uma das seguintes mensagens: “Ilmo. Sr.”, para o sexo masculino ou “Ilma. Sra.” para o sexo feminino, acrescentando o nome em seguida. Também ler a altura e apresenta ro peso ideal da pessoa (requerimento da questão 8)
+//  Entrada : Nome, sexo e altura de uma pessoa.
+//  Saída   : Mensagem "Ilmo. Sr.”, para o sexo masculino ou “Ilma. Sra.” para o sexo feminino, com o nome em seguida, e o peso ideal da pessoa no final.
+
+
+principal
+	// Declarações
+	texto nome;
+	caracter sexo;
+	real altura;
+	real peso;
+	// Instruções
+	escreva ("Digite seu nome: ");
+	leia(nome);
+	escreva ("Digite seu sexo (M ou F): ");
+	leiaCaracter(sexo);
+	escreva ("Digite sua altura: ");
+	leia(altura);
+	se (sexo == 'M' ou sexo == 'm') entao
+		peso = (72.5 * altura) - 58;
+		escreva ("Ilmo. Sr. ", nome, ", seu peso ideal é ", peso);
+	senao
+		se (sexo == 'F' ou sexo == 'f') entao
+			peso = (62.1 * altura) - 44.7;
+			escreva ("Ilmo. Sra. ", nome, ", seu peso ideal é ", peso);
+		fimSe
+	fimSe
+
+fimPrincipal

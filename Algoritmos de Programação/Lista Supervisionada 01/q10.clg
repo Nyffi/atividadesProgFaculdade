@@ -1,0 +1,29 @@
+algoritmo questao10;
+// Síntese
+//  Objetivo:  Fazer um algoritmo em português estruturado que leia três valores numéricos e encontre qual o menor deles, mostrando-o no final.
+//  Entrada : 3 números
+//  Saída   : O menor número.
+
+
+principal
+	// Declarações
+	inteiro num1;	//Cria a variável inteira num1
+	inteiro num2;	//Cria a variável inteira num2
+	inteiro num3;	//Cria a variável inteira num3
+	// Instruções
+	escreva ("Digite o primeiro número: ");
+	leia(num1);	//Usuário dá um valor para a variável num1
+	escreva ("Digite o segundo número: ");
+	leia(num2);	//Usuário dá um valor para a variável num2
+	escreva ("Digite o terceiro número: ");
+	leia(num3);	//Usuário dá um valor para a variável num3
+	se (num1 < num2 e num1 < num3) entao	//Se num1 for menor que num2 e num3
+		escreva ("O número ",num1," é o menor número.");	//num1 será o menor número
+	senao
+		se (num2 < num1 e num2 < num3) entao	//Se num2 for menor que num1 e num3
+			escreva ("O número ",num2," é o menor número.");	//num2 será o menor número
+		senao	//se num3 for menor que num1 e num2
+			escreva ("O número ",num3," é o menor número.");	//num3 será o menor número
+		fimSe
+	fimSe
+fimPrincipal

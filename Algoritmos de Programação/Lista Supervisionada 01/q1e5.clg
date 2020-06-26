@@ -1,0 +1,22 @@
+algoritmo questao1;
+// Síntese
+//  Objetivo:  Construir um algoritmo que a partir da leitura da velocidade e placa do carro, avise ao motorista somente se ele será multado, quando estiver trafegando no Eixo Rodoviário (limite de 80 km/h).
+//  Entrada : Velocidade e placa do carro
+//  Saída   : O motorista será ou não multado
+
+
+principal
+	// Declarações
+	inteiro velCarro;
+	texto placaCarro;
+	// Instruções
+	escreva("Digite a placa do carro: ");
+	leia(placaCarro);
+	escreva("Digite a velocidade do carro: ");
+	leia(velCarro);
+	se (velCarro > 80) entao
+		escreva("O motorista responsável pelo carro com placa ", placaCarro," deve ser multado.");
+	senao
+		escreva("O motorista responsável pelo carro com placa ", placaCarro," não deve ser multado.");
+	fimSe
+fimPrincipal

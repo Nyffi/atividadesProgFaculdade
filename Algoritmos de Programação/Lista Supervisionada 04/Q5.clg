@@ -1,0 +1,99 @@
+algoritmo Q5;
+// Síntese
+//  Objetivo:  	Elaborar dois sub-algoritmos, além do algoritmo principal, onde um deles calcule duas operações aritméticas consegutivas sobre três valores inteiros e dois operadores, lidos no algoritmo principal e outro que verifique se o resultado final das operações produzirá um número par ou ímpar.
+//  Entrada :	Três números inteiros e dois operadores.
+//  Saída   :	Resultado da operação e se o valor final é par ou ímpar.
+
+
+principal
+	// Declarações
+	inteiro num1, num2, num3, res;
+	texto parOuImpar;
+	caracter op1, op2;
+	// Instruções
+	escreva("Digite o primeiro número: ");
+	leia(num1);
+	escreva("Digite o primeiro operador (+, -, *, /): ");
+	leiaCaracter(op1);
+	escreva("Digite o segundo número: ");
+	leia(num2);
+	escreva("Digite o segundo operador (+, -, *, /): ");
+	leiaCaracter(op2);
+	escreva("Digite o terceiro número: ");
+	leia(num3);
+	res = resOp(num1, num2, num3, op1, op2);
+	escreval(num1, " " ,op1, " " ,num2, " " ,op2, " " ,num3, " = " ,res);
+	parImpar(res);
+fimPrincipal
+funcao inteiro resOp (inteiro num1, inteiro num2, inteiro num3, caracter op1, caracter op2)
+	inteiro res;
+
+	se (op1 == '+' e op2 == '+') entao
+		res = num1 + num2 + num3;
+	senao
+		se (op1 == '+' e op2 == '-') entao
+			res = num1 + num2 - num3;
+		senao
+			se (op1 == '+' e op2 == '*') entao
+				res = num1 + num2 * num3;
+			senao
+				se (op1 == '+' e op2 == '/') entao
+					res = num1 + num2 / num3;
+				fimSe
+			fimSe
+		fimSe
+	fimSe
+	se (op1 == '-' e op2 == '+') entao
+		res = num1 - num2 + num3;
+	senao
+		se (op1 == '-' e op2 == '-') entao
+			res = num1 - num2 - num3;
+		senao
+			se (op1 == '-' e op2 == '*') entao
+				res = num1 - num2 * num3;
+			senao
+				se (op1 == '-' e op2 == '/') entao
+					res = num1 - num2 / num3;
+				fimSe
+			fimSe
+		fimSe
+	fimSe
+	se (op1 == '*' e op2 == '+') entao
+		res = num1 * num2 + num3;
+	senao
+		se (op1 == '*' e op2 == '-') entao
+			res = num1 * num2 - num3;
+		senao
+			se (op1 == '*' e op2 == '*') entao
+				res = num1 * num2 * num3;
+			senao
+				se (op1 == '*' e op2 == '/') entao
+					res = num1 * num2 / num3;
+				fimSe
+			fimSe
+		fimSe
+	fimSe
+	se (op1 == '/' e op2 == '+') entao
+		res = num1 / num2 + num3;
+	senao
+		se (op1 == '/' e op2 == '-') entao
+			res = num1 / num2 - num3;
+		senao
+			se (op1 == '/' e op2 == '*') entao
+				res = num1 / num2 * num3;
+			senao
+				se (op1 == '/' e op2 == '/') entao
+					res = num1 / num2 / num3;
+				fimSe
+			fimSe
+		fimSe
+	fimSe
+	retorna res;
+fimFuncao
+procedimento parImpar(inteiro num)
+	se (num mod 2 == 0) entao
+		escreval("O resultado é PAR");
+	senao
+		escreval("O resultado é ÍMPAR");
+	fimSe
+fimProcedimento

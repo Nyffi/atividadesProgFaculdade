@@ -1,0 +1,26 @@
+algoritmo questao17;
+// Síntese
+//  Objetivo:   Fazer um algoritmo que leia o ano de nascimento de uma pessoa e o ano atual, depois calcule e escreva o nome e o número de dias, aproximados, já vividos por essa pessoa. 
+//  Entrada :	Nome da pessoa, ano de nascimento e ano atual
+//  Saída   :	Nome e número de dias , aproximados, já vividos por essa pessoa
+
+
+principal
+	// Declarações
+	texto nome;
+	inteiro anoNasc, anoAtual, dias;
+	// Instruções
+	escreva("Digite o seu nome: ");
+	leia(nome);
+	escreva("Digite seu ano de nascimento: ");
+	leia(anoNasc);
+	escreva("Digite o ano atual: ");
+	leia(anoAtual);
+
+	se (anoNasc < anoAtual) entao
+		dias = (anoAtual - anoNasc) * 365;
+		escreva(nome, ", você tem aproximadamente ", dias, " dias de vida.");
+	senao
+		escreva ("Erro: o ano de nascimento é maior do que o ano atual.");
+	fimSe
+fimPrincipal

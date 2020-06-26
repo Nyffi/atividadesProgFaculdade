@@ -1,0 +1,23 @@
+algoritmo Q9;
+// Síntese
+//  Objetivo:  Construir um algoritmo que calcule e imprima quantos anos serão necessários para que Felisberto seja maior que Anacleto.
+//  Entrada :	Nada.
+//  Saída   :	Anos necessários para que Felisberto seja maior que Anacleto.
+
+
+principal
+	// Declarações
+	real altAnac, altFelis;
+	inteiro ano;
+
+	ano = 0;
+	altAnac = 1.5;
+	altFelis = 1.1;
+	// Instruções
+	enquanto (altFelis < altAnac) faca
+		altAnac = altAnac + 0.02;
+		altFelis = altFelis + 0.03;
+		ano = ano + 1;
+	fimEnquanto
+	escreva("Demorou ", ano, " anos para que Felisberto (1,10m > ", altFelis::2, "m) fosse mais alto que Anacleto (1,50m > ", altAnac::2,"m).");
+fimPrincipal

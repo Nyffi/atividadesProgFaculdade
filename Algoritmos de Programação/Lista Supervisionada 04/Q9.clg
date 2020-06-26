@@ -1,0 +1,50 @@
+algoritmo Q9;
+// Síntese
+//  Objetivo:  	Elabore um algoritmo que solicite ao usuário o seu ano de nascimento e o ano atual. Após a leitura, ele acionará um sub-algoritmo que  apresentará  a  idade  provável,  em  anos,  deste  usuário,  e  sua  classificação.
+//  Entrada :	Ano de nascimento do usuário e ano atual.
+//  Saída   :	Idade provável do usuário e sua classificação.
+
+
+principal
+	// Declarações
+	inteiro anoUser, anoAtual, idadeUser;
+	texto classificacao;
+	// Instruções
+	escreva("Digite o ano atual: ");
+	leia(anoAtual);
+	escreva("Digite o ano de seu nascimento: ");
+	leia(anoUser);
+	idadeUser = calculaIdade(anoUser, anoAtual);
+	classificacao = obtemNivel(idadeUser);
+	escreval("");
+	apresentaClassificacao(idadeUser, classificacao);
+fimPrincipal
+funcao inteiro calculaIdade(inteiro anoUser, inteiro anoAtual)
+	inteiro idade;
+
+	idade = anoAtual - anoUser;
+	retorna idade;
+fimFuncao
+funcao texto obtemNivel(inteiro idade)
+	se (idade <= 10) entao
+		retorna "Criança";
+	senao
+		se (idade > 10 e idade < 18) entao
+			retorna "Adolescente";
+		senao
+			se (idade >= 18 e idade < 25) entao
+				retorna "Jovem";
+			senao
+				se (idade >= 25 e idade <= 58) entao
+					retorna "Adulto";
+				senao
+					retorna "Idoso";
+				fimSe
+			fimSe
+		fimSe
+	fimSe
+fimFuncao
+procedimento apresentaClassificacao(inteiro idade, texto class)
+	escreval("Idade aproximada do usuário: ", idade);
+	escreval("Classificação do usuário: ", class);
+fimProcedimento

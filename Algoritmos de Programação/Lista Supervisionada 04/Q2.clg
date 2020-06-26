@@ -1,0 +1,26 @@
+algoritmo Q2;
+// Síntese
+//  Objetivo:  Fazer um algoritmo que calcule o valor de x (real) elevado a n (inteiro).
+//  Entrada :	Um valor x e um valor n.
+//  Saída   :	Resultado de x elevado a n.
+
+
+principal
+	// Declarações
+	real x;
+	inteiro n;
+	// Instruções
+	escreva("Digite o valor de x (num. real): ");
+	leia(x);
+	escreva("Digite o valor de n (num. inteiro): ");
+	leia(n);
+	resultado(x,n);
+fimPrincipal
+
+procedimento resultado (real x, inteiro n)
+	real res;
+
+	res = exp(x,n);
+	escreval("Resultado de x elevado a n: ", res::2);
+fimProcedimento
+        

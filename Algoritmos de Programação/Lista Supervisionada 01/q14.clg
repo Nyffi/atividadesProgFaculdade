@@ -1,0 +1,29 @@
+algoritmo questao14;
+// Síntese
+//  Objetivo:  Fazer um algoritmo que leia três valores, determine e imprima o maior deles. 
+//  Entrada :	Três valores.
+//  Saída   :	Determinar e imprimir o maior valor.
+
+
+principal
+	// Declarações
+	real numA;
+	real numB;
+	real numC;
+	// Instruções
+	escreva("Digite o primeiro valor: ");
+	leia(numA);
+	escreva("Digite o segundo valor: ");
+	leia(numB);
+	escreva("Digite o terceiro valor: ");
+	leia(numC);
+	se ((numA > numB) e (numA > numC)) entao
+		escreva("O maior valor é ",numA);
+	senao
+		se ((numB > numA) e (numB > numC)) entao
+			escreva("O maior valor é ",numB);
+		senao
+			escreva("O maior valor é ",numC);
+		fimSe
+	fimSe
+fimPrincipal

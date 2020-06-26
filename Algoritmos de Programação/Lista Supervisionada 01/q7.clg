@@ -1,0 +1,25 @@
+algoritmo questao7;
+// Síntese
+//  Objetivo:  Ler dois valores numéricos e apresentar a diferença do maior valor pelo menor.
+//  Entrada : Dois números.
+//  Saída   : Diferença do maior valor pelo menor.
+
+
+principal
+	// Declarações
+	real num1;
+	real num2;
+	real dif;
+	// Instruções
+	escreva("Digite o primeiro número: ");
+	leia(num1);
+	escreva("Digite o segundo número: ");
+	leia(num2);
+	se (num1 > num2) entao
+		dif = num1 - num2;
+		escreva ("A diferença entre ",num1," e ",num2," é de ",dif);
+	senao
+		dif = num2 - num1;
+		escreva ("A diferença entre ",num2," e ",num1," é de ",dif);
+	fimSe
+fimPrincipal

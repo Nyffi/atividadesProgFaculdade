@@ -1,0 +1,35 @@
+algoritmo Q9;
+// Síntese
+//  Objetivo:  Elabore um algoritmo que leia o número imaginado e os chutes, ao final mostre quantas tentativas foram necessárias para descobrir o número.
+//  Entrada :	Número imaginado e os chutes.
+//  Saída   :	Quantidade de tentativas.
+
+
+principal
+	// Declarações
+	inteiro numImag, numChutes, num;
+	num = 0;
+	numChutes = 0;
+	// Instruções
+	escreva("Digite o número imaginado: ");
+	leia(numImag);
+	limpaTela();
+
+	enquanto (num != numImag) faca
+		escreva("Qual foi o número imaginado? ");
+		leia(num);
+		se (num > numImag) entao
+			numChutes = numChutes + 1;
+			escreval ("O número digitado é maior que o número imaginado. Tente de novo!");
+		senao
+			se (num < numImag) entao
+				numChutes = numChutes + 1;
+				escreval ("O número digitado é menor que o número imaginado. Tente de novo!");
+			senao
+				escreval ("Correto! O número imaginado é ", numImag, "!");
+			fimSe
+		fimSe
+	fimEnquanto
+
+fimPrincipal
+

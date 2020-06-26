@@ -1,0 +1,21 @@
+algoritmo questao2;
+// Síntese
+//  Objetivo:  Efetuar a leitura de um número e apresentá-lo como o seu módulo (somente seu valor absoluto) elaborando os cálculos matemáticos para isso.
+//  Entrada : Número
+//  Saída   : Módulo do número
+
+
+principal
+	// Declarações
+	inteiro num;
+	inteiro moduloNum;
+	// Instruções
+	escreva("Digite um número: ");
+	leia(num);
+	se (num < 0) entao
+		moduloNum = -(num);
+	senao
+		moduloNum = num;
+	fimSe
+	escreva("O módulo do número digitado é ", moduloNum);
+fimPrincipal

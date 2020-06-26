@@ -1,0 +1,48 @@
+algoritmo Q7;
+// Síntese
+//  Objetivo:  	Desenvolver um algoritmo que leia um peso em quilogramas (kg) e apresente, por meio de outros dois sub-algoritmos, o valor do peso informado em gramas e em toneladas respectivamente.
+//  Entrada :	Peso de três pessoas.
+//  Saída   :	Valor em gramas e em toneladas.
+
+
+principal
+	// Declarações
+	
+	// Instruções
+	leValidaPeso();
+fimPrincipal
+procedimento leValidaPeso ()
+	real peso1, peso2, peso3;
+
+	escreva("Digite o primeiro peso (kg): ");
+	leia(peso1);
+	escreva("Digite o segundo peso (kg): ");
+	leia(peso2);
+	escreva("Digite o terceiro peso (kg): ");
+	leia(peso3);
+	limpaTela();
+
+	escreval("Primeiro peso (kilograma): ", peso1);
+	escreval("Segundo peso (kilograma): ", peso2);
+	escreval("Terceiro peso (kilograma): ", peso3);
+	escreval("");
+	apresentaGrama(peso1, peso2, peso3);
+	escreval("");
+	apresentaTonelada(peso1, peso2, peso3);
+fimProcedimento
+procedimento apresentaGrama(real g1, real g2, real g3)
+	g1 = g1 * 1000;
+	g2 = g2 * 1000;
+	g3 = g3 * 1000;
+	escreval("Primeiro peso (grama): ", g1);
+	escreval("Segundo peso (grama): ", g2);
+	escreval("Terceiro peso (grama): ", g3);
+fimProcedimento
+procedimento apresentaTonelada(real t1, real t2, real t3)
+	t1 = t1 / 1000;
+	t2 = t2 / 1000;
+	t3 = t3 / 1000;
+	escreval("Primeiro peso (tonelada): ", t1);
+	escreval("Segundo peso (tonelada): ", t2);
+	escreval("Terceiro peso (tonelada): ", t3);
+fimProcedimento

@@ -1,0 +1,47 @@
+algoritmo questao12e13;
+// Síntese
+//  Objetivo:  Fazer um algoritmo em português estruturado que leia o número de DDD e informe a qual cidade pertence.
+//  Entrada :	Número de DDD
+//  Saída   :	Informação de onde aquele DDD pertence
+
+
+principal
+	// Declarações
+	inteiro ddd;	//Cria a variável que armazena o DDD
+	// Instruções
+	escreva ("Digite o DDD: ");
+	leia(ddd);
+	se (ddd == 61) entao	//Se o DDD for 61, enviar mensagem avisando que ele pertence à Brasília
+		escreva ("Esse DDD pertence à Brasília.");
+	senao
+		se (ddd == 71) entao	//Se o DDD for 71, enviar mensagem avisando que ele pertence à Salvador
+			escreva ("Esse DDD pertence à Salvador.");
+		senao
+			se (ddd == 11) entao	//Se o DDD for 11, enviar mensagem avisando que ele pertence à São Paulo
+				escreva ("Esse DDD pertence à São Paulo.");
+			senao
+				se (ddd == 21) entao	//Se o DDD for 21, enviar mensagem avisando que ele pertence ao Rio de Janeiro
+					escreva ("Esse DDD pertence ao Rio de Janeiro.");
+				senao
+					se (ddd == 32) entao	//Se o DDD for 32, enviar mensagem avisando que ele pertence à Juiz de Fora
+						escreva ("Esse DDD pertence à Juiz de Fora.");
+					senao
+						se (ddd == 19) entao	//Se o DDD for 19, enviar mensagem avisando que ele pertence à Campinas
+							escreva ("Esse DDD pertence à Campinas.");
+						senao
+							se (ddd == 27) entao	//Se o DDD for 27, enviar mensagem avisando que ele pertence à Vitória
+								escreva ("Esse DDD pertence à Vitória.");
+							senao
+								se (ddd == 31) entao	//Se o DDD for 31, enviar mensagem avisando que ele pertence à Belo Horizonte
+									escreva ("Esse DDD pertence à Belo Horizonte.");
+								senao	//Caso o DDD informado não seja nenhum dos DDDs listados, enviar mensagem avisando que o DDD não foi identificado
+									escreva ("Esse DDD pertence à uma cidade no Brasil sem identificação.");
+								fimSe
+							fimSe
+						fimSe
+					fimSe
+				fimSe
+			fimSe
+		fimSe
+	fimSe
+fimPrincipal

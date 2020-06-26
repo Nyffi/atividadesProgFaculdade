@@ -1,0 +1,32 @@
+algoritmo questao2;
+// Síntese
+//  Objetivo:  Construir um algoritmo de ajuda para vendedores.
+//  Entrada :	Valor total
+//  Saída   :	Total a pagar com desconto de 10%, valor de cada parcela no parcelamento de 3x sem juros, comissão do vendedor caso seja à vista e caso seja parcelada.
+
+
+principal
+	// Declarações
+	real valT, valDesc, valParc;
+	inteiro tipoVenda;
+	// Instruções
+	escreva ("Digite o valor total: ");
+	leia(valT);
+	escreval ("Escolha o tipo de venda: ");
+	escreval ("1) À vista");
+	escreval ("2) Parcelado");
+	leia(tipoVenda);
+
+	escolha(tipoVenda)
+		caso 1 
+			valDesc = valT - (valT * 0.1);
+			escreva("O valor total a pagar com o desconto de 10% é de R$", valDesc, " e a comissão do vendedor é de R$", valDesc * 0.05);
+			interrompa;
+		caso 2
+			valParc = valT / 3;
+			escreva("O valor total a pagar em 3x sem juros é de R$", valParc, " e a comissão do vendedor é de R$", valT * 0.05);
+			interrompa;
+		outroCaso
+			escreva("Digite uma escolha válida.");
+	fimEscolha
+fimPrincipal

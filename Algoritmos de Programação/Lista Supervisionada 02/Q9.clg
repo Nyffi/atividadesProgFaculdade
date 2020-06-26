@@ -1,0 +1,46 @@
+algoritmo Q9;
+// Síntese
+//  Objetivo:  
+//  Entrada : Sexo, cor dos olhos, cor dos cabelos e idade.
+//  Saída   : A maior idade dos habitantes pesquisados e a porcentagem de indivíduos do sexo feminino cuja idade está entre 18 e 35 anos e que tenham olhos verdes e cabelos loiros.
+
+
+principal
+	// Declarações
+	real pcPessoaB;
+	inteiro quantPessoaTotal, idade, maiorIdade, quantPessoaB;
+	caracter sexo, corOlho, corCabelo;
+
+	maiorIdade = 0;
+	quantPessoaTotal = 0;
+	quantPessoaB = 0;
+	// Instruções
+	faca
+		escreva ("Digite o sexo do entrevistado: ");
+		leiaCaracter(sexo);
+		escreva ("Informe a cor dos olhos do entrevistado, sendo eles (A)zul, (V)erde, (C)astanho ou (P)reto: ");
+		leiaCaracter(corOlho);
+		escreva ("Informe a cor do cabelo do entrevistado, sendo eles (L)oiro, (C)astanho ou (P)reto: ");
+		leiaCaracter(corCabelo);
+		escreva ("Digite a idade do entrevistado: ");
+		leia(idade);
+
+		se (idade != -1) entao
+			quantPessoaTotal = quantPessoaTotal + 1;
+			se (idade > maiorIdade) entao
+				maiorIdade = idade;
+			fimSe
+			se (idade >= 18 e idade <= 35 e (corOlho == 'v' ou corOlho == 'V') e (corCabelo == 'l' ou corCabelo == 'L') e (sexo == 'f' ou sexo == 'F')) entao
+				quantPessoaB = quantPessoaB + 1;
+			fimSe
+		fimSe
+	enquanto (idade != -1);
+
+	pcPessoaB = quantPessoaB / quantPessoaTotal;
+	pcPessoaB = pcPessoaB * 100;
+
+	limpaTela();
+
+	escreval ("A maior idade registrada é de ", maiorIdade, " anos.");
+	escreval ("Dos ", quantPessoaTotal, " entrevistados, ", pcPessoaB, " tem entre 18 e 35 anos de idade, tem olhos verdes e cabelos loiros.");
+fimPrincipal

@@ -1,0 +1,30 @@
+algoritmo Q4;
+// Síntese
+//  Objetivo:  	Criar um algoritmo que solicite a quantidade de alunos matriculados na disciplina do professor, a quantidade de aprovados e reprovados no final do semestre e apresente, por meio de um sub-algoritmo, as porcentagens de alunos reprovados e aprovados no semestre corrente.
+//  Entrada :	Quantidade de alunos matriculados, alunos aprovados e reprovados.
+//  Saída   :	Porcentagem de alunos reprovados e aprovados.
+
+
+principal
+	// Declarações
+	inteiro quantAluno, quantAprovado, quantReprovado;
+	// Instruções
+	escreva("Digite a quantidade de alunos no total: ");
+	leia(quantAluno);
+	escreva("Digite a quantidade de alunos aprovados: ");
+	leia(quantAprovado);
+	escreva("Digite a quantidade de alunos reprovados: ");
+	leia(quantReprovado);
+	apresentaPorcentagem(quantAluno, quantAprovado, quantReprovado);
+fimPrincipal
+
+procedimento apresentaPorcentagem (inteiro qntAluno, inteiro qntAprovado, inteiro qntReprovado)
+	real pctgAprovado, pctgReprovado;
+
+	pctgAprovado = (qntAprovado / qntAluno) * 100;
+	pctgReprovado = (qntReprovado / qntAluno) * 100;
+	limpaTela();
+	escreval("Quantidade total de alunos: ", qntAluno);
+	escreval("Porcentagem de alunos aprovados: ", pctgAprovado::2, "%");
+	escreval("Porcentagem de alunos reprovados: ", pctgReprovado::2, "%");
+fimProcedimento

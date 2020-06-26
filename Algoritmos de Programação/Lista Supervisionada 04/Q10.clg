@@ -1,0 +1,48 @@
+algoritmo Q10;
+// Síntese
+//  Objetivo:  	Fazer um algoritmo que leia as notas dos alunos de uma disciplina e mostre para cada aluno a sua média e se ele está aprovado ou reprovado. Cada aluno terá sempre 2 notas, uma nota teórica e uma nota prática. 
+//  Entrada :	Duas notas e nome do aluno.
+//  Saída   :	Média das notas e se o aluno foi aprovado ou reprovado.
+
+
+principal
+	// Declarações
+	texto nomeAluno, aprovacao;
+	real nota1, nota2, media;
+	caracter opcao;
+	// Instruções
+	faca
+		escreva("Digite o nome do aluno: ");
+		leia(nomeAluno);
+		escreva("Digite a primeira nota do aluno: ");
+		leia(nota1);
+		escreva("Digite a segunta nota do aluno: ");
+		leia(nota2);
+			
+		limpaTela();
+		escreval("Aluno:  ", nomeAluno);
+		escreval("Nota 1: ", nota1::2);
+		escreval("Nota 2: ", nota2::2);
+		escreval("");
+		media = mediaPonderada(nota1,nota2);
+		aprovacao = resAluno(media);
+		escreval("Média: ", media::2);
+		escreval("Resultado: ", aprovacao);
+		escreval("");
+		escreval("Deseja calcular a média de outro aluno? (S/N): ");
+		leiaCaracter(opcao);
+	enquanto (opcao == 's' ou opcao == 'S');
+fimPrincipal
+funcao real mediaPonderada (real n1, real n2)
+	real mP;
+
+	mP = ((3 * n1) + (7 * n2)) / (3 + 7);
+	retorna mP;
+fimFuncao
+funcao texto resAluno(real media)
+	se (media >= 7) entao
+		retorna "Aprovado";
+	senao
+		retorna "Reprovado";
+	fimSe
+fimFuncao

@@ -1,0 +1,56 @@
+algoritmo Q10;
+// Síntese
+//  Objetivo:  Construa um algoritmo que permita fazer um levantamento do estoque de vinhos de uma adega.
+//  Entrada : Total geral de vinhos
+//  Saída   : Porcentagem de cada tipo sobre o total geral de vinhos.
+
+
+principal
+	// Declarações
+	caracter escVinho;
+	inteiro quantT, quantB, quantR, quantTotal;
+	real pcT, pcB, pcR;
+
+	escVinho = 'x';
+	quantT = 0;
+	quantB = 0;
+	quantR = 0;
+	quantTotal = 0;
+	// Instruções
+	enquanto (escVinho != 'f' e escVinho != 'F') faca
+		
+		escreval ("Selecione os vinhos para adicionar no estoque: ");
+		escreval ("T) Vinho Tinto (", quantT, " no estoque)");
+		escreval ("B) Vinho Branco (", quantB, " no estoque)");
+		escreval ("R) Vinho Rosê (", quantR, " no estoque)");
+		escreval ("Selecione o vinho desejado (F para finalizar): ");
+		leiaCaracter(escVinho);
+
+		escolha(escVinho)
+			caso 't'
+				limpaTela();
+				quantT = quantT + 1;
+				quantTotal = quantTotal + 1;
+				interrompa;
+			caso 'b'
+				limpaTela();
+				quantB = quantB + 1;
+				quantTotal = quantTotal + 1;
+				interrompa;
+			caso 'r'
+				limpaTela();
+				quantR = quantR + 1;
+				quantTotal = quantTotal + 1;
+				interrompa;
+			caso 'f'
+				pcT = (quantT / quantTotal) * 100;
+				pcB = (quantB / quantTotal) * 100;
+				pcR = (quantR / quantTotal) * 100;
+				escreval ("Dos ", quantTotal, " vinhos disponíveis, ", pcT::2, "% são vinhos Tinto, ", pcB::2, "% são vinhos Branco e ", pcR::2, "% são vinhos Rosê.");
+				interrompa;
+			outroCaso
+				limpaTela();
+				escreval ("Seleção inválida, selecione uma das opções da lista.");
+		fimEscolha
+	fimEnquanto
+fimPrincipal

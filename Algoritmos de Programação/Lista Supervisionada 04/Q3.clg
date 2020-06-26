@@ -1,0 +1,57 @@
+algoritmo Q3;
+// Síntese
+//  Objetivo:  	Desenvolver um algoritmo que leia as duas notas de até 20 alunos e calcule as possíveis médias finais para cada um felez, usando pelo menos 3 sub-algoritmos. Para cada aluno deverá ser lido as notas, chamado as três funcões e apresentado as médias no algoritmo principal. 
+//  Entrada :	Quantidade de alunos (máximo 20) e as notas de cada aluno.
+//  Saída   :	As notas e os três tipos de média.
+
+
+principal
+	// Declarações
+	inteiro quantAluno, ctrl;
+	real nota1, nota2;
+	// Instruções
+	escreva("Digite a quantidade de alunos: ");
+	leia(quantAluno);
+	enquanto (quantAluno < 0 ou quantAluno > 20) faca
+		escreval("Valor inválido. Por favor insira uma quantia acima de 0 e menor ou igual a 20.");
+		escreva("Digite a quantidade de alunos: ");
+		leia(quantAluno);
+	fimEnquanto
+	para (ctrl de 1 ate quantAluno passo 1) faca
+		escreva("Digite a primeira nota do aluno ", ctrl,": ");
+		leia(nota1);
+		escreva("Digite a segunta nota do aluno ", ctrl,": ");
+		leia(nota2);
+		
+		limpaTela();
+		escreval("Aluno Nº ", ctrl);
+		escreval("Nota 1: ", nota1::2);
+		escreval("Nota 2: ", nota2::2);
+		escreval("");
+		mediaAritmetica(nota1,nota2, quantAluno);
+		mediaPonderada46(nota1,nota2, quantAluno);
+		mediaPonderada37(nota1,nota2, quantAluno);
+		escreval("");
+	fimPara
+fimPrincipal
+
+procedimento mediaAritmetica (real n1, real n2, inteiro qntAluno)
+	real mA;
+
+	mA = (n1 + n2) / 2;
+	escreval("Média aritmética das duas notas: ", mA::2);
+fimProcedimento
+
+procedimento mediaPonderada46 (real n1, real n2, inteiro qntAluno)
+	real mP46;
+
+	mP46 = ((4 * n1) + (6 * n2)) / (4 + 6);
+	escreval("Média ponderada com peso 4 e 6 respectivamente: ", mP46::2);
+fimProcedimento
+
+procedimento mediaPonderada37 (real n1, real n2, inteiro qntAluno)
+	real mP37;
+
+	mP37 = ((3 * n1) + (7 * n2)) / (3 + 7);
+	escreval("Média ponderada com peso 3 e 7 respectivamente: ", mP37::2);
+fimProcedimento

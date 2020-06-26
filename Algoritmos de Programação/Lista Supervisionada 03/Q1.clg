@@ -1,0 +1,40 @@
+algoritmo Q1;
+// Síntese
+//  Objetivo:  Elaborar um algoritmo que, a partir de um dia, mês e ano fornecidos, valide se eles compõem uma data válida. Não deixe de considerar os meses com 30 ou 31 dias, e o tratamento de ano bissexto.
+//  Entrada : Dia, mês e ano.
+//  Saída   : Verificação se a data é válida ou não.
+
+
+principal
+	// Declarações
+	inteiro dia, mes, ano;
+	logico bissexto, mes31, dataValida;
+	// Instruções
+	escreva ("Insira um dia (1 a 31): ");
+	leia(dia);
+	escreva ("Insira um mês (1 a 12): ");
+	leia(mes);
+	escreva ("Insira um ano: ");
+	leia(ano);
+
+	se (ano mod 400 == 0 ou (ano mod 4 == 0 e ano mod 100 != 0)) entao
+		bissexto = verdadeiro;
+	senao
+		bissexto = falso;
+	fimSe
+
+	se (dia <= 31 e dia > 0 e (mes == 1 ou mes == 3 ou mes == 5 ou mes == 7 ou mes == 8 ou mes == 10 ou mes == 12) e ano > 0) entao
+		escreva ("A data é válida.");
+	senao
+		se (dia <= 30 e dia > 0 e (mes == 4 ou mes == 6 ou mes == 9 ou mes == 11) e ano > 0) entao
+			escreva ("A data é válida.");
+		senao
+			se (dia <= 29 e dia > 0 e mes == 2 e ano > 0 e bissexto == verdadeiro) entao
+				escreva ("A data é válida (Ano Bissexto)");
+			senao
+				escreva ("A data é inválida");
+			fimSe
+		fimSe
+	fimSe
+	
+fimPrincipal

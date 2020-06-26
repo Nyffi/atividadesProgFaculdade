@@ -1,0 +1,44 @@
+algoritmo Q1;
+// Síntese
+//  Objetivo:  Construir um algoritmo que calcule o fatorial de um número, baseando-se na definição matemática de fatorial.
+//  Entrada :	Um número
+//  Saída   : 	Fatorial do número informado
+
+
+principal
+	// Declarações
+	inteiro num, controle, res;
+	// Instruções
+	escreva ("Digite um número: ");
+	leia (num);
+	res = num;
+	escreva (num,"! = ");
+
+	se (num != 0) entao
+		se (num > 0) entao
+			para (controle de num ate 1 passo -1) faca
+				se (res != controle) entao
+					res = res * controle;
+				fimSe
+				se (controle != 1) entao
+					escreva (controle, " X ");
+				senao
+					escreva (controle, " = ", res);
+				fimSe
+			fimPara
+		senao
+			para (controle de num ate -1 passo 1) faca
+				se (res != controle) entao
+					res = res * controle;
+				fimSe
+				se (controle != -1) entao
+					escreva (controle, " X ");
+				senao
+					escreva (controle, " = ", res);
+				fimSe
+			fimPara
+		fimSe
+	senao
+		escreva (1);
+	fimSe
+fimPrincipal

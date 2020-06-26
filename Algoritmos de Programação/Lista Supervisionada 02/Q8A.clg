@@ -1,0 +1,46 @@
+algoritmo Q8A;
+// Síntese
+//  Objetivo:  Faça diferentes algoritmos (um para cada estrutura de repetição) que leiam a identificação e o preço de cada produto deste mercador e calcule e escreva a identificação e o novo preço após o aumento.
+//  Entrada : Quantidade de produtos a serem atualizados, a identificação e o preço de cada produto
+//  Saída   : A idenfificação e o novo preço após o aumento.
+
+
+principal
+	// Declarações
+	inteiro quantProduto, ctrl, idProduto;
+	real precoAtual, precoAumento;
+	caracter maisProduto;
+
+	maisProduto = 's';
+	// Instruções
+	faca
+		escreva ("Digite quantos produtos devem ter o preço recalculados: ");
+		leia (quantProduto);
+		se (quantProduto <= 0) entao
+			escreva ("Erro: Digite um valor válido acima de zero.");
+		senao
+			para (ctrl de 1 ate quantProduto passo 1) faca
+				escreva ("Qual o número ID do produto? ");
+				leia(idProduto);
+				se (idProduto < 0) entao
+					escreva ("Erro: Digite um valor válido.");
+					ctrl = ctrl - 1;
+				senao
+					escreva ("Qual o valor atual do produto? ");
+					leia(precoAtual);
+					se (precoAtual > 0) entao
+						limpaTela();
+						precoAumento = precoAtual + (precoAtual * 0.10);
+						escreval ("O valor do produto ID ", idProduto, ", com acréscimo de 10% no valor, foi de R$", precoAtual::2, " para R$", precoAumento::2);
+						escreval ("");
+					senao
+						escreval ("Erro: Digite um valor válido.");
+						ctrl = ctrl - 1;
+					fimSe
+				fimSe
+			fimPara
+		fimSe
+		escreva ("Existe mais produtos para serem atualizados? (S/N) ");
+		leiaCaracter(maisProduto);
+	enquanto (maisProduto == 's' ou maisProduto == 'S');
+fimPrincipal

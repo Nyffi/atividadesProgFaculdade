@@ -1,0 +1,35 @@
+algoritmo questao3e11;
+// Síntese
+//  Objetivo:  Verificar se três valores fornecidos pelo usuário podem constituir os lados de um triângulo, e verificar que tipo de triângulo será formado
+//  Entrada : Três valores
+//  Saída   : Resposta se os valores podem constituir os lados de um triângulo e qual triângulo será constituído
+
+
+principal
+	// Declarações
+	real numA;	//Cria a variável real numA
+	real numB;	//Cria a variável real numB
+	real numC;	//Cria a variável real numC
+	// Instruções
+	escreva ("Digite o primeiro número: ");
+	leia (numA);	//O valor para a variável numA é definida
+	escreva ("Digite o segundo número: ");
+	leia (numB);	//O valor para a variável numB é definida
+	escreva ("Digite o terceiro número: ");
+	leia (numC);	//O valor para a variável numB é definida
+	se ((numA + numB) > numC e (numC + numA) > numB) entao //Se a soma de dois valores for maior que o terceiro valor, então os valores formam um triângulo
+		se (((numA == numB) e (numA != numC)) ou ((numA == numC) e (numB != numA)) ou ((numB == numC) e (numB != numC))) entao	//Se dois valores forem iguais e um desses valores for diferente do terceiro valor, será um triângulo isósceles
+			escreva ("Os valores fornecidos formam um triângulo isósceles");
+		senao
+			se (numA == numB e numB == numC) entao	//Se todos os valores forem iguais, será um triângulo equilátero
+				escreva ("Os valores fornecidos formam um triângulo equilátero");
+			senao
+				se (numA != numB e numB != numC e numC != numA) entao	//Se todos os valores forem diferentes, será um triângulo escaleno
+					escreva ("Os valores fornecidos formam um triângulo escaleno");
+				fimSe
+			fimSe
+		fimSe
+	senao	//Se a soma de dois valores for menor que o terceiro valor, então os valores não formam um triângulo
+		escreva ("Os valores fornecidos não formam um triângulo");	
+	fimSe
+fimPrincipal

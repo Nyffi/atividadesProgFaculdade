@@ -1,0 +1,19 @@
+algoritmo Q5;
+// Síntese
+//  Objetivo:  Escrever um algoritmo que imprima todas as possibilidades de valores cuja soma seja igual a 7.
+//  Entrada : Nada
+//  Saída   : Todas as possibilidades de valores cuja soma seja igual a 7.
+
+
+principal
+	// Declarações
+	inteiro dadoA, dadoB;
+	// Instruções
+	para (dadoA de 1 ate 6 passo 1) faca
+		para (dadoB de 1 ate 6 passo 1) faca
+			se (dadoA + dadoB == 7) entao
+				escreval ("Dado A: ", dadoA, "  Dado B: ", dadoB);
+			fimSe
+		fimPara
+	fimPara
+fimPrincipal

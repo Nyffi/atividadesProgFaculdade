@@ -1,0 +1,100 @@
+algoritmo Q11;
+// Síntese
+//  Objetivo:  Fazer um algoritmo que informa o vcencedor de um concurso de piadas.
+//  Entrada : Nome dos finalistas, quantidade de juizes e a nota de cada juiz.
+//  Saída   :	O nome e o total de pontos de cada concorrente e o nome e o total de pontos do vencedor.
+
+
+principal
+	// Declarações
+	texto finalista1, finalista2, finalista3;
+	inteiro pontoFinal1, pontoFinal2, pontoFinal3, ponto, quantJuiz, ctrl, primeiro, segundo;
+
+	pontoFinal1 = 0;
+	pontoFinal2 = 0;
+	pontoFinal3 = 0;
+	// Instruções
+	escreva ("Digite o nome do primeiro finalista: ");
+	leia(finalista1);
+	escreva ("Digite o nome do segundo finalista: ");
+	leia(finalista2);
+	escreva ("Digite o nome do terceiro finalista: ");
+	leia(finalista3);
+	escreva ("Digite a quantidade de juizes: ");
+	leia(quantJuiz);
+
+	para (ctrl de 1 ate quantJuiz passo 1) faca
+	escreva ("Digite a nota do primeiro finalista: ");
+	leia(ponto);
+	se (ponto > 100 ou ponto < 0) entao
+		escreval ("Nota inválida por exceder o limite (0-100). A nota informada será arredondada para o valor mais próximo.");
+		se (ponto > 100) entao
+			pontoFinal1 = pontoFinal1 + 100;
+		fimSe
+		se (ponto < 0) entao
+			pontoFinal1 = pontoFinal1 + 0;
+		fimSe
+	senao
+		pontoFinal1 = pontoFinal1 + ponto;
+	fimSe
+	escreva ("Digite a nota do segundo finalista: ");
+	leia(ponto);
+	se (ponto > 100 ou ponto < 0) entao
+		escreval ("Nota inválida por exceder o limite (0-100). A nota informada será arredondada para o valor mais próximo.");
+		se (ponto > 100) entao
+			pontoFinal2 = pontoFinal2 + 100;
+		fimSe
+		se (ponto < 0) entao
+			pontoFinal2 = pontoFinal2 + 0;
+		fimSe
+	senao
+		pontoFinal2 = pontoFinal2 + ponto;
+	fimSe
+	
+	escreva ("Digite a nota do terceiro finalista: ");
+	leia(ponto);
+	se (ponto > 100 ou ponto < 0) entao
+		escreval ("Nota inválida por exceder o limite (0-100). A nota informada será arredondada para o valor mais próximo.");
+		se (ponto > 100) entao
+			pontoFinal3 = pontoFinal3 + 100;
+		fimSe
+		se (ponto < 0) entao
+			pontoFinal3 = pontoFinal3 + 0;
+		fimSe
+	senao
+		pontoFinal3 = pontoFinal3 + ponto;
+	fimSe
+	fimPara
+
+	limpaTela();
+	se (pontoFinal1 > pontoFinal2 e pontoFinal1 > pontoFinal3) entao
+		escreval ("1º lugar - ", finalista1, " - ", pontoFinal1, " pontos");
+		se (pontoFinal2 > pontoFinal3) entao
+			escreval ("2º lugar - ", finalista2, " - ", pontoFinal2, " pontos");
+			escreval ("3º lugar - ", finalista3, " - ", pontoFinal3, " pontos");
+		senao
+			escreval ("2º lugar - ", finalista3, " - ", pontoFinal3, " pontos");
+			escreval ("3º lugar - ", finalista2, " - ", pontoFinal2, " pontos");
+		fimSe
+	senao
+		se (pontoFinal2 > pontoFinal1 e pontoFinal2 > pontoFinal3) entao
+			escreval ("1º lugar - ", finalista2, " - ", pontoFinal2, " pontos");
+			se (pontoFinal1 > pontoFinal3) entao
+				escreval ("2º lugar - ", finalista1, " - ", pontoFinal1, " pontos");
+				escreval ("3º lugar - ", finalista3, " - ", pontoFinal3, " pontos");
+			senao
+				escreval ("2º lugar - ", finalista3, " - ", pontoFinal3, " pontos");
+				escreval ("3º lugar - ", finalista1, " - ", pontoFinal1, " pontos");
+			fimSe
+		senao
+			escreval ("1º lugar - ", finalista3, " - ", pontoFinal3, " pontos");
+			se (pontoFinal1 > pontoFinal2) entao
+				escreval ("2º lugar - ", finalista1, " - ", pontoFinal1, " pontos");
+				escreval ("3º lugar - ", finalista2, " - ", pontoFinal2, " pontos");
+			senao
+				escreval ("2º lugar - ", finalista2, " - ", pontoFinal2, " pontos");
+				escreval ("3º lugar - ", finalista1, " - ", pontoFinal1, " pontos");
+			fimSe
+		fimSe
+	fimSe
+fimPrincipal

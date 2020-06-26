@@ -1,0 +1,65 @@
+algoritmo Q8;
+// Síntese
+//  Objetivo:  	Apresente por meio de um sub-algoritmo o nome e a classificação para a cidade informada, devendo a classificação ser obtida por um outro sub-algoritmo.
+//  Entrada :	Quantidade de habitantes.
+//  Saída   :	Nome e classificação da cidade informada.
+
+
+principal
+	// Declarações
+	inteiro qntHab;
+	texto nomeCidade, classCid;
+	caracter opcao;
+	logico continuar;
+
+	continuar = verdadeiro;
+	// Instruções
+	enquanto (continuar == verdadeiro) faca
+		escreva("Digite o nome da cidade: ");
+		leia(nomeCidade);
+		escreva("Digite a quantidade de habitantes da cidade: ");
+		leia(qntHab);
+		enquanto (qntHab <= 0) faca
+			escreval("Valor inválido. Digite uma quantia de habitantes maior que zero.");
+			escreva("Digite a quantidade de habitantes da cidade: ");
+			leia(qntHab);
+		fimEnquanto
+		classCid = classificarCidade(qntHab);
+		limpaTela();
+		escreval("Nome da cidade: ", nomeCidade);
+		escreval("Quantidade de habitantes: ", qntHab);
+		escreval("Classificação: ", classCid);
+		escreval("");
+		escreva("Deseja classificar outra cidade? (S/N): ");
+		leiaCaracter(opcao);
+
+		escolha (opcao)
+			caso 's'
+			caso 'S'
+				continuar = verdadeiro;
+				interrompa;
+			caso 'n'
+			caso 'N'
+				continuar = falso;
+				interrompa;
+			outroCaso
+				escreva ("Opção inválida. Por favor escolha uma das opções (S/N): ");
+				leiaCaracter(opcao);
+		fimEscolha
+	fimEnquanto
+fimPrincipal
+funcao texto classificarCidade (inteiro qntHab)
+	se (qntHab > 1000001) entao
+		retorna "Metrópole";
+	senao
+		se (qntHab >= 15001 e qntHab <= 1000000) entao
+			retorna "Cidade";
+		senao
+			se (qntHab >= 5001 e qntHab <= 15000) entao
+				retorna "Distrito";
+			senao
+				retorna "Vila";
+			fimSe
+		fimSe
+	fimSe
+fimFuncao

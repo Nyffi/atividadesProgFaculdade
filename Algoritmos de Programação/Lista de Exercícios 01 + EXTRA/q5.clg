@@ -1,0 +1,21 @@
+algoritmo questao5;
+// Síntese
+//  Objetivo:  Fazer um algoritmo para auxiliar um construtor a descobrir a quantidade de rolos e a quantidade de metros avulsos de fios que ele precisa adquirir.
+//  Entrada : Quantidade total de fios em metros
+//  Saída   : Quantidade de rolos e quantidade de metros avulsos de fios
+
+
+principal
+	// Declarações
+	inteiro quantTotal;
+	inteiro quantRolos;
+	inteiro quantMetros;
+	inteiro roloFio;
+	roloFio = 50;
+	// Instruções
+	escreva("Informe quantos metros de fio serão necessários: ");
+	leia(quantTotal);
+	quantRolos = quantTotal / roloFio;
+	quantMetros = quantTotal mod roloFio;
+	escreva("Vão ser necessários ", quantRolos, " rolos e ", quantMetros," metros de fios extra.");
+fimPrincipal

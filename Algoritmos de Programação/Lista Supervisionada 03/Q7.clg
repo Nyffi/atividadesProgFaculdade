@@ -1,0 +1,48 @@
+algoritmo Q7;
+// Síntese
+//  Objetivo:  Construa um algoritmo que leia um conjunto de dados contendo altura e sexo de 50 pessoas.
+//  Entrada : Altura e sexo.
+//  Saída   :	A maior e a menor altura do grupo e a média de altura das mulheres.
+
+
+principal
+	// Declarações
+	inteiro ctrl;
+	real maiorAltura, menorAltura, alt, mediaAltF, quantF;
+	caracter sexo;
+
+	mediaAltF = 0;
+	quantF = 0;
+	maiorAltura = 0;
+	menorAltura = 999;
+	// Instruções
+	para (ctrl de 1 ate 10 passo 1) faca
+		escreva("Digite o sexo: ");
+		leiaCaracter(sexo);
+		escreva("Digite a altura: ");
+		leia(alt);
+	
+		se (sexo == 'f' ou sexo == 'F') entao
+			mediaAltF = mediaAltF + alt;
+			quantF = quantF + 1;
+		fimSe
+		se (alt > maiorAltura) entao
+			maiorAltura = alt;
+		senao
+			se (alt < menorAltura) entao
+				menorAltura = alt;
+			fimSe
+		fimSe
+	fimPara
+
+	mediaAltF = mediaAltF / quantF;
+
+	se (maiorAltura != menorAltura) entao
+		escreval ("A maior altura do grupo é ", maiorAltura);
+		escreval ("A menor altura do grupo é ", menorAltura);
+	senao
+		escreval ("Todos do grupo tem a mesma altura de ", alt);
+	fimSe
+
+	escreval ("A média de altura das mulheres é de ", mediaAltF::2);
+fimPrincipal

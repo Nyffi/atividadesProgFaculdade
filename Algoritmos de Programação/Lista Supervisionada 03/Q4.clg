@@ -1,0 +1,23 @@
+algoritmo Q4;
+// Síntese
+//  Objetivo:  Construir um algoritmo que apresente os 20 primeiros termos da série de Fibonacci.
+//  Entrada : Nada.
+//  Saída   : 20 primeiros termos da série de Fibonacci.
+
+
+principal
+	// Declarações
+	inteiro ant, atual, fibo, ctrl;
+	ant = 0;
+	atual = 1;
+	// Instruções
+	escreval(ant);
+	escreval(atual);
+
+	para (ctrl de 1 ate 18 passo 1) faca
+		fibo = ant + atual;
+		escreval(fibo);
+		ant = atual;
+		atual = fibo;
+	fimPara
+fimPrincipal

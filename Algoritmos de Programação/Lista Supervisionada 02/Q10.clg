@@ -1,0 +1,23 @@
+algoritmo Q10;
+// Síntese
+//  Objetivo:  Fazer um algoritmo que leia números inteiros até que a quantidade lida seja 100 ou até que seja lido um número negativo.
+//  Entrada : Número inteiro
+//  Saída   : Quantidade total de números lidos
+
+
+principal
+	// Declarações
+	inteiro numTotal, num;
+	numTotal = 0;
+	num = 0;
+	// Instruções
+	enquanto (num >= 0 e numTotal < 100) faca
+		escreva ("Digite um número inteiro: ");
+		leia(num);
+		se (numTotal < 100 e num >= 0) entao
+			numTotal = numTotal + 1;
+		fimSe
+	fimEnquanto
+
+	escreval ("Foram informados ", numTotal, " números inteiros.");
+fimPrincipal

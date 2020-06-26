@@ -1,0 +1,31 @@
+algoritmo Q1;
+// Síntese
+//  Objetivo:  	Fazer a leitura da altura de até 5 pessoas e apresentar a média aritmética entre elas, calculada por um sub-algoritmo
+//  Entrada :	Altura de até 5 pessoas
+//  Saída   :	Média aritmética das alturas informadas
+
+principal
+	// Declarações
+	real alt1, alt2, alt3, alt4, alt5, mediaAltura;
+	// Instruções
+		escreva("Informe a primeira altura: ");
+		leia(alt1);
+		escreva("Informe a segunda altura: ");
+		leia(alt2);
+		escreva("Informe a terceira altura: ");
+		leia(alt3);
+		escreva("Informe a quarta altura: ");
+		leia(alt4);
+		escreva("Informe a quinta altura: ");
+		leia(alt5);
+
+		limpaTela();
+		mediaAltura = calcularMedia(alt1, alt2, alt3, alt4, alt5);
+		escreva("Média das alturas: ", mediaAltura::2);
+fimPrincipal
+
+funcao real calcularMedia (real a1, real a2, real a3, real a4, real a5)
+	real res;
+	res = (a1 + a2 + a3 + a4 + a5) / 5;
+	retorna res;
+fimFuncao

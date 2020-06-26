@@ -1,0 +1,22 @@
+algoritmo Q2;
+// Síntese
+//  Objetivo:  Faça um algoritmo que leia dois números e calcule o resultado da multiplicação de um pelo outro sem utilizar a operação de multiplicação.
+//  Entrada : Dois números
+//  Saída   :	O resultado da multiplicação de um pelo outro.
+
+
+principal
+	// Declarações
+	inteiro num1, num2, res, ctrl;
+	res = 0;
+	// Instruções
+	escreva("Digite o primeiro número: ");
+	leia(num1);
+	escreva("Digite o segundo número: ");
+	leia(num2);
+	
+	para (ctrl de 1 ate num2 passo 1) faca
+		res = res + num2;
+	fimPara
+	escreva(num1," X ", num2," = ", res);
+fimPrincipal

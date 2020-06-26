@@ -1,0 +1,17 @@
+algoritmo questao1;
+// Síntese
+//  Objetivo:   Construir um algoritmo que solicite o número de dias trabalhados pelo encanador e exiba a quantia líquida que deverá ser paga.
+//  Entrada :	Número de dias trabalhados
+//  Saída   :	Quantia líquida que deverá ser paga
+
+
+principal
+	// Declarações
+	inteiro dias, quantLiq;
+	// Instruções
+	escreva ("Digite o número de dias trabalhados: ");
+	leia(dias);
+	quantLiq = 40 * dias;
+	quantLiq = quantLiq - (quantLiq * 0.11);
+	escreva ("Você receberá R$", quantLiq, " (R$", 40*dias - ((40*dias) - ((40*dias)*0.11))," foram retirados pelo imposto de renda.");
+fimPrincipal

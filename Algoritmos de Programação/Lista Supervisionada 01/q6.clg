@@ -1,0 +1,20 @@
+algoritmo questao6;
+// Síntese
+//  Objetivo:  Determina se um número inteiro qualquer é PAR ou IMPAR.
+//  Entrada : Número inteiro.
+//  Saída   : Aviso se o número é par ou impar.
+
+
+principal
+	// Declarações
+	inteiro num;
+	// Instruções
+	escreva ("Digite um número inteiro: ");
+	leia(num);
+	se (num mod 2 == 0) entao
+		escreva ("O número é PAR.");
+	senao
+		escreva ("O número é IMPAR");
+	fimSe
+
+fimPrincipal

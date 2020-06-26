@@ -1,0 +1,48 @@
+algoritmo questao4;
+// Síntese
+//  Objetivo:  Construir um algoritmo que leia o horário (hora, minuto e segundo) de inicio e a duração, em segundos, de uma experiência biológica.
+//  Entrada : Horas, minutos e segundos de inicio e a duração, em segundos
+//  Saída   : Horário do término
+
+
+principal
+	// Declarações
+	inteiro hhI, mmI, ssI, hhT, mmT, ssT, hhD, mmD, ssD;
+	mmD = 0;
+	hhD = 0;
+	// Instruções
+	escreva ("Digite as horas de início: ");
+	leia(hhI);
+	escreva ("Digite os minutos de início: ");
+	leia(mmI);
+	escreva ("Digite os segundos de início: ");
+	leia(ssI);
+	escreva ("Digite a duração, em segundos, da experiência: ");
+	leia(ssD);
+	
+	mmD = ssD \ 60;
+	hhD = mmD \ 60;
+	ssD = ssD - (mmD * 60);
+	hhT = hhI + hhD;
+	mmT = mmI + mmD;
+	ssT = ssI + ssD;
+
+	enquanto (ssT >= 60) faca
+		ssT = ssT - 60;
+		mmT = mmT + 1;
+	fimEnquanto
+	enquanto (mmT >= 60) faca
+		mmT = mmT - 60;
+		hhT = hhT + 1;
+	fimEnquanto
+	enquanto (ssD >= 60) faca
+		ssD = ssD - 60;
+		mmD = mmD + 1;
+	fimEnquanto
+	enquanto (mmD >= 60) faca
+		mmD = mmD - 60;
+		hhD = hhD + 1;
+	fimEnquanto
+
+	escreva ("A experiência terá a duração de ",hhD,"H", mmD,"M", ssD,"S, e irá terminar às ", hhT,"H", mmT,"M", ssT,"S");
+fimPrincipal

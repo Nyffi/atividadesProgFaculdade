@@ -1,0 +1,45 @@
+algoritmo Q7;
+// Síntese
+//  Objetivo:  Elabore um algoritmo que apresenta as compras de frutas efetuadas por usuário, sendo elas identificadas por meio de um número.
+//  Entrada :	A fruta desejada e sua quantidade.
+//  Saída   :	As compras de frutas efetuadas pelo usuário.
+
+
+principal
+	// Declarações
+	inteiro quant1, quant2, quant3, frutaEsc;
+	quant1 = 0;
+	quant2 = 0;
+	quant3 = 0;
+	// Instruções
+	faca
+		escreval ("- - - - - - L O J A  D E  F R U T A S - - - - - -");
+		escreval ("1 => ABACAXI");
+		escreval ("2 => MAÇÃ");
+		escreval ("3 => PERA");
+		escreval ("Escolha qual fruta deseja comprar (Digite 0 para finalizar a compra): ");
+		leia (frutaEsc);
+
+		escolha (frutaEsc)
+		caso 0
+			limpaTela();
+			escreval ("Você comprou ", quant1, " abacaxís, ", quant2, " maçãs e ", quant3, " peras.");
+			interrompa;
+		caso 1
+			quant1 = quant1 + 1;
+			limpaTela();
+			interrompa;
+		caso 2
+			quant2 = quant2 + 1;
+			limpaTela();
+			interrompa;
+		caso 3
+			quant3 = quant3 + 1;
+			limpaTela();
+			interrompa;
+		outroCaso
+			limpaTela();
+			escreval ("Essa fruta não está disponível. Por favor escolha uma das frutas na lista.");
+		fimEscolha
+	enquanto (frutaEsc >= 1 e frutaEsc != 0);
+fimPrincipal

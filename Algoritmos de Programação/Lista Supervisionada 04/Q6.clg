@@ -1,0 +1,52 @@
+algoritmo Q6;
+// Síntese
+//  Objetivo:  	Elabore um algoritmo que armazene o peso de 3 pessoas e depois organize-os de forma que os valores fiquem armazenados em ordem crescente de peso. Esta ordenação deverá ser feita e apresentada por um sub-algoritmo.
+//  Entrada :	Peso de três pessoas.
+//  Saída   :	Os valores em ortem crescente.
+
+
+principal
+	// Declarações
+	real peso1, peso2, peso3;
+	// Instruções
+	escreva("Digite o valor do primeiro peso: ");
+	leia(peso1);
+	escreva("Digite o valor do segundo peso: ");
+	leia(peso2);
+	escreva("Digite o valor do terceiro peso: ");
+	leia(peso3);
+	escreval("Pesos em ordem crescente: ");
+	ordemCresc(peso1, peso2, peso3);
+fimPrincipal
+procedimento ordemCresc (real p1, real p2, real p3)
+	se (p1 < p2 e p1 < p3) entao
+		escreval("Primeiro peso: ", p1);
+		se (p2 < p3) entao
+			escreval("Segundo peso: ", p2);
+			escreval("Terceiro peso: ", p3);
+		senao
+			escreval("Segundo peso: ", p3);
+			escreval("Terceiro peso: ", p2);
+		fimSe
+	senao
+		se (p2 < p1 e p2 < p3) entao
+			escreval("Primeiro peso: ", p2);
+			se (p1 < p3) entao
+				escreval("Segundo peso: ", p1);
+				escreval("Terceiro peso: ", p3);
+			senao
+				escreval("Segundo peso: ", p3);
+				escreval("Terceiro peso: ", p1);
+			fimSe
+		senao
+			escreval("Primeiro peso: ", p3);
+			se (p2 < p1) entao
+				escreval("Segundo peso: ", p2);
+				escreval("Terceiro peso: ", p1);
+			senao
+				escreval("Segundo peso: ", p1);
+				escreval("Terceiro peso: ", p2);
+			fimSe
+		fimSe
+	fimSe
+fimProcedimento

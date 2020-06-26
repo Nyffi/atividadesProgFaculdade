@@ -1,0 +1,77 @@
+algoritmo Q3;
+// Síntese
+//  Objetivo:  Construir um algoritmo que seja capaz de dar a classificação olímpica de 3 países informados.
+//  Entrada :	País e quantidade de medalhas de ouro, prata e bronze.
+//  Saída   :	Classificação dos países
+
+
+principal
+	// Declarações
+	texto paisA, paisB, paisC;
+	inteiro pesoPaisA, pesoPaisB, pesoPaisC, ouroA, ouroB, ouroC, prataA, prataB, prataC, bronzeA, bronzeB, bronzeC;
+	pesoPaisA = 0;
+	pesoPaisB = 0;
+	pesoPaisC = 0;
+	// Instruções
+	escreva ("Escreva o nome do primeiro país: ");
+	leia(paisA);
+	escreva ("Quantas medalhas de ouro esse país conseguiu? : ");
+	leia(ouroA);
+	escreva ("Quantas medalhas de prata esse país conseguiu? : ");
+	leia(prataA);
+	escreva ("Quantas medalhas de bronze esse país conseguiu? : ");
+	leia(bronzeA);
+	pesoPaisA = (ouroA * 3) + (prataA * 2) + bronzeA;
+	
+	escreva ("Escreva o nome do segundo país: ");
+	leia(paisB);
+	escreva ("Quantas medalhas de ouro esse país conseguiu? : ");
+	leia(ouroB);
+	escreva ("Quantas medalhas de prata esse país conseguiu? : ");
+	leia(prataB);
+	escreva ("Quantas medalhas de bronze esse país conseguiu? : ");
+	leia(bronzeB);
+	pesoPaisB = (ouroB * 3) + (prataB * 2) + bronzeB;
+	
+	escreva ("Escreva o nome do terceiro país: ");
+	leia(paisC);
+	escreva ("Quantas medalhas de ouro esse país conseguiu? : ");
+	leia(ouroC);
+	escreva ("Quantas medalhas de prata esse país conseguiu? : ");
+	leia(prataC);
+	escreva ("Quantas medalhas de bronze esse país conseguiu? : ");
+	leia(bronzeC);
+	pesoPaisC = (ouroC * 3) + (prataC * 2) + bronzeA;
+
+	se (pesoPaisA > pesoPaisB e pesoPaisA > pesoPaisC) entao
+		escreval ("1º lugar - ", paisA, " - ", ouroA, " medalhas de ouro - ", prataA, " medalhas de prata - ", bronzeA, " medalhas de bronze - Peso Total: ", pesoPaisA);
+		se (pesoPaisB > pesoPaisC) entao
+			escreval ("2º lugar - ", paisB, " - ", ouroB, " medalhas de ouro - ", prataB, " medalhas de prata - ", bronzeB, " medalhas de bronze - Peso Total: ", pesoPaisB);
+			escreval ("3º lugar - ", paisC, " - ", ouroC, " medalhas de ouro - ", prataC, " medalhas de prata - ", bronzeC, " medalhas de bronze - Peso Total: ", pesoPaisC);
+		senao
+			escreval ("2º lugar - ", paisC, " - ", ouroC, " medalhas de ouro - ", prataC, " medalhas de prata - ", bronzeC, " medalhas de bronze - Peso Total: ", pesoPaisC);
+			escreval ("3º lugar - ", paisB, " - ", ouroB, " medalhas de ouro - ", prataB, " medalhas de prata - ", bronzeB, " medalhas de bronze - Peso Total: ", pesoPaisB);
+		fimSe
+	senao
+		se (pesoPaisB > pesoPaisA e pesoPaisB > pesoPaisC) entao
+			escreval ("1º lugar - ", paisB, " - ", ouroB, " medalhas de ouro - ", prataB, " medalhas de prata - ", bronzeB, " medalhas de bronze - Peso Total: ", pesoPaisB);
+			se (pesoPaisB > pesoPaisC) entao
+				escreval ("2º lugar - ", paisA, " - ", ouroA, " medalhas de ouro - ", prataA, " medalhas de prata - ", bronzeA, " medalhas de bronze - Peso Total: ", pesoPaisA);
+				escreval ("3º lugar - ", paisC, " - ", ouroC, " medalhas de ouro - ", prataC, " medalhas de prata - ", bronzeC, " medalhas de bronze - Peso Total: ", pesoPaisC);
+			senao
+				escreval ("2º lugar - ", paisC, " - ", ouroC, " medalhas de ouro - ", prataC, " medalhas de prata - ", bronzeC, " medalhas de bronze - Peso Total: ", pesoPaisC);
+				escreval ("3º lugar - ", paisA, " - ", ouroA, " medalhas de ouro - ", prataA, " medalhas de prata - ", bronzeA, " medalhas de bronze - Peso Total: ", pesoPaisA);
+			fimSe
+		senao
+			escreval ("1º lugar - ", paisC, " - ", ouroC, " medalhas de ouro - ", prataC, " medalhas de prata - ", bronzeC, " medalhas de bronze - Peso Total: ", pesoPaisC);
+			se (pesoPaisA > pesoPaisB) entao
+				escreval ("2º lugar - ", paisA, " - ", ouroA, " medalhas de ouro - ", prataA, " medalhas de prata - ", bronzeA, " medalhas de bronze - Peso Total: ", pesoPaisA);
+				escreval ("3º lugar - ", paisB, " - ", ouroB, " medalhas de ouro - ", prataB, " medalhas de prata - ", bronzeB, " medalhas de bronze - Peso Total: ", pesoPaisB);
+			senao
+				escreval ("2º lugar - ", paisB, " - ", ouroB, " medalhas de ouro - ", prataB, " medalhas de prata - ", bronzeB, " medalhas de bronze - Peso Total: ", pesoPaisB);
+				escreval ("3º lugar - ", paisA, " - ", ouroA, " medalhas de ouro - ", prataA, " medalhas de prata - ", bronzeA, " medalhas de bronze - Peso Total: ", pesoPaisA);
+			fimSe
+		fimSe
+	fimSe
+	
+fimPrincipal

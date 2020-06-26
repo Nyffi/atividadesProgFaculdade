@@ -1,0 +1,23 @@
+algoritmo questao15;
+// Síntese
+//  Objetivo:   Fazer um algoritmo que calcule e escreva o valor a ser pago a sua provedora de acesso à Internet
+//  Entrada :	Quantidade de horas utilizadas
+//  Saída   :	Valor a ser pago à provedora de acesso à Internet
+
+
+principal
+	// Declarações
+	inteiro horas;
+	real pgmt;
+	pgmt = 30;
+	// Instruções
+	escreva ("Insira a quantidade de horas de uso da Internet: ");
+	leia(horas);
+	se (horas < 20) entao
+		escreva ("O valor a ser pago é de R$",pgmt);
+	senao
+		horas = horas - 20;
+		pgmt = 30 + (30 * 0.10) * horas;
+		escreva ("O valor a ser pago é de R$",pgmt);
+	fimSe
+fimPrincipal

@@ -1,0 +1,54 @@
+algoritmo Q4;
+// Síntese
+//  Objetivo:	Prepare um algoritmo para calcular h sendo n fornecido pelo usuário.
+//  Entrada :	Um valor n.
+//  Saída   :	O resultado de h.
+
+
+principal
+	// Declarações
+	inteiro n, ctrl;
+	real h, div;
+	h = 0;
+	// Instruções
+	escreva ("Digite um número: ");
+	leia(n);
+	
+	se (n != 0) entao
+		para (ctrl de 1 ate n passo 1) faca
+			div = 1 / ctrl;
+			h = h + div;
+
+		se (ctrl == 1) entao
+			escreva ("h = 1/",ctrl," + ");
+		senao
+			se (ctrl > 1 e ctrl != n) entao
+				escreva ("1/",ctrl," + ");
+			senao
+				se (ctrl == n) entao
+					escreva ("1/",ctrl, " = ", h::3);
+				fimSe
+			fimSe
+		fimSe 
+		fimPara
+
+		para (ctrl de -1 ate n passo -1) faca
+			div = 1 / ctrl;
+			h = h + div;
+
+		se (ctrl == -1) entao
+			escreva ("h = 1/(",ctrl,") + ");
+		senao
+			se (ctrl < -1 e ctrl != n) entao
+				escreva ("1/(",ctrl,") + ");
+			senao
+				se (ctrl == n) entao
+					escreva ("1/(",ctrl, ") = ", h::3);
+				fimSe
+			fimSe
+		fimSe 
+		fimPara
+	senao
+			escreva ("Impossível dividir por 0");
+		fimSe
+fimPrincipal

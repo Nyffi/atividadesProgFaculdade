@@ -1,0 +1,24 @@
+algoritmo Q3;
+// Síntese
+//  Objetivo:  Fazer um algoritmo que apresenta a menor altura entre 10 pessoas, usando apenas a estrutura de repetição enquanto.
+//  Entrada :	Altura de 10 pessoas.
+//  Saída   :	A menor altura dos valores informados.
+
+
+principal
+	// Declarações
+	real alt, menAlt;
+	inteiro ctrl;
+	menAlt = 999;
+	ctrl = 0;
+	// Instruções
+	enquanto (ctrl < 10) faca
+		escreva ("Digite a altura (ex. 1.80): ");
+		leia(alt);
+		se (alt < menAlt) entao
+			menAlt = alt;
+		fimSe
+		ctrl = ctrl + 1;
+	fimEnquanto
+	escreva("A menor altura fornecida é ",menAlt);
+fimPrincipal

@@ -1,0 +1,39 @@
+algoritmo Q6;
+// Síntese
+//  Objetivo:  Fazer um algoritmo que receba o sexo e a nota dos alunos de uma classe e apresente a média das notas dos alunos e a média das notas das alunas.
+//  Entrada : O sexo e a nota dos alunos de uma classe.
+//  Saída   : Média das notas dos alunos e média das notas das alunas.
+
+
+principal
+	// Declarações
+	real mediaF, mediaM, nota;
+	inteiro controle, quantM, quantF;
+	caracter sexo;
+
+	nota = 0;
+	quantM = 0;
+	quantF = 0;
+	mediaM = 0;
+	mediaF = 0;
+	// Instruções
+	enquanto (nota >= 0) faca
+		escreva ("Digite a nota do aluno: ");
+		leia(nota);
+		escreva ("Digite o sexo do aluno, (M)asculino ou (F)eminino: ");
+		leiaCaracter(sexo);
+
+		se (sexo == 'm' ou sexo == 'M' e nota >= 0) entao
+			quantM = quantM + 1;
+			mediaM = mediaM + nota;
+		fimSe
+		se (sexo == 'f' ou sexo == 'F' e nota >= 0) entao
+			quantF = quantF + 1;
+			mediaF = mediaF + nota;
+		fimSe
+	fimEnquanto
+	mediaM = mediaM / quantM;
+	mediaF = mediaF / quantF;
+	escreval ("A media da nota dos ", quantM," alunos do sexo Masculino informados é ", mediaM::2);
+	escreval ("A media da nota dos ", quantF," alunas do sexo Feminino informados é ", mediaF::2);
+fimPrincipal

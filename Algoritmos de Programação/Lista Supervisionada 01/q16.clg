@@ -1,0 +1,35 @@
+algoritmo questao16;
+// Síntese
+//  Objetivo:   Fazer um algoritmo que leia o nome e a altura de três pessoas, determine e apresente o nome e a altura da menor delas
+//  Entrada :	Nome e a altura de três pessoas
+//  Saída   :	Determine e apresente o nome e a altura da menor delas. 
+
+
+principal
+	// Declarações
+	texto nomeA, nomeB, nomeC;
+	inteiro altA, altB, altC;
+	// Instruções
+	escreva("Digite o primeiro nome: ");
+	leia(nomeA);
+	escreva("Digite a altura da primeira pessoa: ");
+	leia(altA);
+	escreva("Digite o segundo nome: ");
+	leia(nomeB);
+	escreva("Digite a altura da segunda pessoa: ");
+	leia(altB);
+	escreva("Digite o terceiro nome: ");
+	leia(nomeC);
+	escreva("Digite a altura da terceira pessoa: ");
+	leia(altC);
+
+	se ((altA < altB) e (altA < altC)) entao
+		escreva(nomeA," é a menor pessoa entre os três.");
+	senao
+		se ((altB < altA) e (altB < altC)) entao
+			escreva(nomeB," é a menor pessoa entre os três.");
+		senao 
+			escreva(nomeC," é a menor pessoa entre os três.");
+		fimSe
+	fimSe
+fimPrincipal

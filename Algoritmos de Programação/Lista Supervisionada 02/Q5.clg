@@ -1,0 +1,46 @@
+algoritmo Q5;
+// Síntese
+//  Objetivo:  Construir um algoritmo que calcule o fatorial de um número, baseando-se na definição matemática de fatorial.
+//  Entrada :	Um número
+//  Saída   : 	Fatorial do número informado
+
+
+principal
+	// Declarações
+	inteiro num, controle, res;
+	// Instruções
+	escreva ("Digite um número: ");
+	leia (num);
+	res = num;
+	escreva (num,"! = ");
+	controle = num;
+	se (num != 0) entao
+		se (num > 0) entao
+			enquanto (controle != 0) faca
+				se (res != controle) entao
+					res = res * controle;
+				fimSe
+				se (controle != 1) entao
+					escreva (controle, " X ");
+				senao
+					escreva (controle, " = ", res);
+				fimSe
+				 	controle = controle - 1;
+			fimEnquanto
+		senao
+			enquanto (controle != 0) faca
+				se (res != controle) entao
+					res = res * controle;
+				fimSe
+				se (controle != -1) entao
+					escreva (controle, " X ");
+				senao
+					escreva (controle, " = ", res);
+				fimSe
+					controle = controle + 1;
+			fimEnquanto
+		fimSe
+	senao
+		escreva (1);
+	fimSe
+fimPrincipal
