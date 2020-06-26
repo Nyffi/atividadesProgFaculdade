@@ -1,0 +1,25 @@
+algoritmo Q11;
+// Síntese
+//  Objetivo:	Construa um algoritmo que calcule a média aritmética de um conjunto de números pares que forem fornecidos pelo usuário.
+//  Entrada :	Conjunto de números pares.
+//  Saída   :	Média dos números pares.
+
+
+principal
+	// Declarações
+	inteiro num, media, quantNumPar;
+	media = 0;
+	num = 1;
+	quantNumPar = 0;
+	// Instruções
+	enquanto (num != 0) faca
+		escreva ("Digite um número par: ");
+		leia(num);
+		se (num >= 1) entao
+			media = media + num;
+			quantNumPar = quantNumPar + 1;
+		fimSe
+	fimEnquanto
+	media = media / quantNumPar;
+	escreva ("A média é: ", media);
+fimPrincipal
