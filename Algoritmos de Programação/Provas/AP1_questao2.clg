@@ -1,0 +1,96 @@
+// Nome: Paulo César		Questão: 02
+algoritmo AP1_Q2;
+// Síntese
+//  Objetivo:  	Criar um algoritmo que cadastre os pedidos dos clientes e calcule o resumo da conta de cada mesa
+//  Entrada :	Número da mesa, quantidade de produtos nos pedidos dos clientes, taxa de serviço.
+//  Saída   :	Número da mesa, quantidade solicitada de cada produto, descrição do produto, preço, valor parcial, subtotal, taxa de serviço (quando houver) e valor total da conta.
+
+
+principal
+	// Declarações
+	caracter taxaServico;
+	inteiro quantHamb, quantBat, quantMilk, quantAgua, mesa;
+	real subTotal, total, valor, valHamb, valBat, valMilk, valAgua, gorjeta;
+	// Instruções
+	quantHamb = 0;
+	quantBat = 0;
+	quantMilk = 0;
+	quantAgua = 0;
+
+	escreva("Informe o número da mesa: ");
+	leia(mesa);
+	enquanto (mesa <= 0 ou mesa > 7) faca
+		escreval("Erro: Essa mesa não existe. Por favor digite um número válido.");
+		escreva("Informe o número da mesa: ");
+		leia(mesa);
+	fimEnquanto
+
+	limpaTela();
+	escreval("- - - - - - H A M B U R G U E R I A - - - - - -");
+	escreva("H) Hambúrguer - R$28,00		Quant: ");
+	leia(quantHamb);
+	se (quantHamb <= 0) entao
+		quantHamb = 0;
+	fimSe
+	valHamb = 28 * quantHamb;
+
+	escreva("B) Batata Frita - R$9,00		Quant: ");
+	leia(quantBat);
+	se (quantBat <= 0) entao
+		quantBat = 0;
+	fimSe
+	valBat = 9 * quantBat;
+
+	escreva("M) Milk Shake - R$15,00		Quant: ");
+	leia(quantMilk);
+	se (quantMilk <= 0) entao
+		quantMilk = 0;
+	fimSe
+	valMilk = 15 * quantMilk;
+
+	escreva("A) Água Mineral - R$4,00		Quant: ");
+	leia(quantAgua);
+	se (quantAgua <= 0) entao
+		quantAgua = 0;
+	fimSe
+	valAgua = 4 * quantAgua;
+
+	escreval("");
+	escreval("Deseja adicionar a taxa de serviço (gorjeta)? (s/n)");
+	leiaCaracter(taxaServico);
+
+	subTotal = valHamb + valBat + valMilk + valAgua;
+	se (taxaServico == 's' ou taxaServico == 'S') entao
+		gorjeta = subTotal * 0.10;
+		total = subTotal + gorjeta;
+	senao
+		total = subTotal;
+	fimSe
+
+	limpaTela();
+	escreval("------------------------------------------------------");
+	escreval("Mesa: ", mesa);
+	escreval("------------------------------------------------------");
+	escreval("Descrição		Qtd.	Valor	Parcial");
+	escreval("------------------------------------------------------");
+	se (quantHamb > 0) entao
+		escreval("Hambúrguer		",quantHamb,"	R$28.00	R$", valHamb::2);
+	fimSe
+	se (quantBat > 0) entao
+		escreval("Batata Frita		",quantBat,"	R$9.00	R$", valBat::2);
+	fimSe
+	se (quantMilk > 0) entao
+		escreval("Milk Shake		",quantMilk,"	R$15.00	R$", valMilk::2);
+	fimSe
+	se (quantAgua > 0) entao
+		escreval("Água Mineral		",quantAgua,"	R$4.00	R$", valAgua::2);
+	fimSe
+	escreval("------------------------------------------------------");
+	escreval("SUBTOTAL: 				R$", subTotal::2);
+	escreval("------------------------------------------------------");
+	se (taxaServico == 's' ou taxaServico == 'S') entao
+		escreval("Serviço (+10%): 				R$", gorjeta::2);
+		escreval("------------------------------------------------------");
+	fimSe
+	escreval("TOTAL: 					R$", total::2);
+fimPrincipal

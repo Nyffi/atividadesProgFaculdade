@@ -1,0 +1,54 @@
+algoritmo Q4;
+// Síntese
+//  Objetivo:	Elaborar um algoritmo que possa realizar uma pesquisa para verificar com os participantes qual a equipe que foi mais privilegiada na opinião dele.
+//  Entrada :	Quant. de pessoas entrevistadas (maior que 10) e equipe favorita do entrevistado.
+//  Saída   :	Lista das equipes mais privilegiadas.
+
+
+principal
+	// Declarações
+	inteiro equipeF, equipeM, equipeR, outraEquipe, entrevistados, ctrl;
+	caracter equipe;
+
+	equipeF = 0;
+	equipeM = 0;
+	equipeR = 0;
+	outraEquipe = 0;
+	// Instruções
+	escreva ("Quantas pessoas serão entrevistadas? (Acima de 10): ");
+	leia(entrevistados);
+		se (entrevistados > 10) entao
+			para (ctrl de 1 ate entrevistados passo 1) faca
+				limpaTela();
+				escreval ("- - - - - E Q U I P E S - - - - -");
+				escreval ("F) Ferrari");
+				escreval ("M) Mercedes");
+				escreval ("R) Redbull");
+				escreval ("");
+				escreval ("Qualquer outra letra será considerada como outra equipe não listada.");
+				escreva ("Escolha uma equipe: ");
+				leiaCaracter(equipe);
+
+				escolha(equipe)
+					caso 'f'
+						equipeF = equipeF + 1;
+						interrompa;
+					caso 'm'
+						equipeM = equipeM + 1;
+						interrompa;
+					caso 'r'
+						equipeR = equipeR + 1;
+						interrompa;
+					outroCaso
+						outraEquipe = outraEquipe + 1;
+				fimEscolha
+			fimPara
+			limpaTela();
+			escreval("A equipe Ferrari recebeu ", equipeF, " votos.");
+			escreval("A equipe Mercedes recebeu ", equipeM, " votos.");
+			escreval("A equipe Redbull recebeu ", equipeR, " votos.");
+			escreva(outraEquipe, " votos foram para outras equipes não listadas.");
+		senao
+			escreva("A quantidade informada é menor que 10. Informe uma quantidade acima de 10 pessoas.");
+		fimSe
+fimPrincipal

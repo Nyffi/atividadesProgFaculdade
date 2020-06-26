@@ -1,0 +1,78 @@
+algoritmo Q4;
+// Síntese
+//  Objetivo:  	Elabore um algoritmo que obtenha, para cada assalariado, com carteira profissional assinada, o seu sexo M (masculino) e F (feminino) e o valor de seu salário, devendo este salário ser maior que um real (R$ 1,00).
+//  Entrada :	Sexo e valor do salário.
+//  Saída   :	Salário em reais, classificação e sexo por extenso.
+
+
+principal
+	// Declarações
+	inteiro salarioAcima, salarioAbaixo;
+	real salario;
+	caracter sexo, opcao;
+	logico continuar;
+	texto classificacao;
+	continuar = verdadeiro;
+	salarioAcima = 0;
+	salarioAbaixo = 0;
+	// Instruções
+	faca
+		limpaTela();
+		escreva("Digite o valor do seu salário: ");
+		leia(salario);
+		se (salario > 1) entao
+			escreva("Digite o seu sexo (M/F): ");
+			leiaCaracter(sexo);
+			se (sexo == 'm' ou sexo == 'M' ou sexo == 'f' ou sexo == 'F') entao
+				classificacao = classificaSalario(salario);
+				se (comparaTexto(classificacao, "Acima") == 0) entao
+					salarioAcima = salarioAcima + 1;
+				senao
+					se (comparaTexto(classificacao, "Abaixo") == 0) entao
+						salarioAbaixo = salarioAbaixo + 1;
+					fimSe
+				fimSe
+				mostraClassifica(salario, classificacao, sexo);
+			senao
+				escreval("Escolha inválida. Informe um valor válido (M - Masculino ou F - Feminino).");
+			fimSe
+		senao
+			escreval("Valor inválido. Informe um valor acima de R$1.00");
+		fimSe
+			escreva("Deseja continuar? (S/N): ");
+			leiaCaracter(opcao);
+		enquanto (opcao != 's' e opcao != 'S' e opcao != 'n' e opcao != 'N') faca
+			escreva("Valor inválido. Insira uma das respostas válidas. (S/N): ");
+			leiaCaracter(opcao);
+		fimEnquanto
+		se (opcao == 's' ou opcao == 'S') entao
+			continuar = verdadeiro;
+		senao
+			continuar = falso;
+		fimSe
+	enquanto (continuar == verdadeiro);
+	escreval("Dos entrevistados, ", salarioAcima, " usuários possuem salário acima do salário mínimo, e ", salarioAbaixo, " usuários possuem salário abaixo do salário mínimo.");
+fimPrincipal
+
+funcao texto classificaSalario (real salario)
+	se (salario < 954) entao
+		retorna "Abaixo";
+	senao
+		se (salario == 954) entao
+			retorna "Igual";
+		senao
+			retorna "Acima";
+		fimSe
+	fimSe
+fimFuncao
+
+procedimento mostraClassifica (real salario, texto classif, caracter sexo)
+	limpaTela();
+	escreval("Salário do usuário: R$", salario::2);
+	escreval("Classificação do salário (quanto comparado ao salário mínimo): ", classif);
+	se (sexo == 'm' ou sexo == 'M') entao
+		escreval("Sexo do usuário: Masculino");
+	senao
+		escreval("Sexo do usuário: Feminino");
+	fimSe
+fimProcedimento

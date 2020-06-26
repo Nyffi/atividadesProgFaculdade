@@ -1,0 +1,173 @@
+//Nome: Paulo César 	Questão: 01
+algoritmo AP3_questao1;
+// Síntese
+//  Objetivo:  	Criar um programa para coletar os dados necessários para descobrir qual é o estilo de jogo que as pessoas mais gostam.
+//  Entrada :	Nome do responsável da pesquisa, idade do entrevistado e seu estilo de jogo favorito.
+//  Saída   :	Nome do responsável, idade, classificação e estilo de jogo favorito do entrevistado, quantidade de entrevistados, idade da criança mais nova, idade do idoso ou adulto mais velho e a abreviação e a descrição do estilo de jogo mais popular.
+
+
+principal
+	// Declarações
+	texto nomeResponsa, estilo[300];
+	caracter opcao;
+	inteiro idade[300], quantEntrev, idadeCrian, idadeVelho, qntF, qntR, qntM, qntP, qntO, ctrl;
+
+	opcao = 'S';
+	quantEntrev = 0;
+	idadeCrian = 999;
+	idadeVelho = 0;
+	qntF = 0;
+	qntR = 0;
+	qntM = 0;
+	qntP = 0;
+	qntO = 0;
+	ctrl = 0;
+	// Instruções
+	nomeResponsa = leValidaResponsavel();
+	enquanto (opcao == 'S') faca
+
+		idade[quantEntrev] = leValidaIdade();
+		se (idade[quantEntrev] < idadeCrian e idade[quantEntrev] >= 4 e idade[quantEntrev] < 12) entao
+			idadeCrian = idade[quantEntrev];
+		fimSe
+		se (idade[quantEntrev] > idadeVelho e idade[quantEntrev] >= 18 e idade[quantEntrev] <= 120) entao
+			idadeVelho = idade[quantEntrev];
+		fimSe
+		
+		estilo[quantEntrev] = leValidaEstiloJogo(qntF, qntR, qntM, qntP, qntO);
+		
+		quantEntrev = quantEntrev + 1;
+		escreval("");
+		faca
+			escreva("Deseja coletar informações de outro entrevistado? (S/N)");
+			leiaCaracter(opcao);
+			opcao = maiusculoCaracter(opcao);
+		enquanto (opcao != 'S' e opcao != 'N');
+	fimEnquanto
+
+	limpaTela();
+
+	escreval("----------------------------------------------------------------------------------");
+	escreval("Responsável pela pesquisa: ", nomeResponsa);
+	escreval("----------------------------------------------------------------------------------");
+	escreval("IDADE	CLASSIFICAÇÃO	ESTILO DE JOGO FAVORITO");
+	escreval("----------------------------------------------------------------------------------");
+	para (ctrl de 0 ate quantEntrev - 1 passo 1) faca
+		escreva(idade[ctrl], "	");
+		se (idade[ctrl] >= 4 e idade[ctrl] < 12) entao
+			escreva("Criança		");
+		senao
+			se (idade[ctrl] >= 12 e idade[ctrl] < 18) entao
+				escreva("Adolescente	");
+			senao
+				se (idade[ctrl] >= 18 e idade[ctrl] < 60) entao
+					escreva("Adulto		");
+				senao
+					escreva("Idoso		");
+				fimSe
+			fimSe
+		fimSe
+	escreva(estilo[ctrl]);
+	escreval("");
+	fimPara
+	escreval("----------------------------------------------------------------------------------");
+	escreval("Resumo: ");
+	escreval(" * Nro. de entrevistados: ", quantEntrev);
+	se (idadeCrian != 999) entao
+		escreval(" * Idade da criança mais nova: ", idadeCrian);
+	senao
+		escreval(" * Nenhuma criança foi entrevistada.");
+	fimSe
+	se (idadeVelho != 0) entao
+		escreval(" * Idade do idoso/adulto mais velho: ", idadeVelho);
+	senao
+		escreval(" * Nenhum idoso ou adulto foi entrevistado.");
+	fimSe
+	escreva(" * O estilo de jogo preferido ");
+	se (qntF > qntR e qntF > qntM e qntF > qntP e qntF > qntO) entao
+		escreva("foi FPS (Tiro em Primeira Pessoa).");
+	senao
+		se (qntR > qntF e qntR > qntM e qntR > qntP e qntR > qntO) entao
+			escreva("foi RTS (Estratégia em Tempo Real).");
+		senao
+			se (qntM > qntF e qntM > qntR e qntM > qntP e qntM > qntO) entao
+				escreva("foi MOBA (Arena de Batalha Multijogador Online).");
+			senao
+				se (qntP > qntF e qntP > qntR e qntP > qntM e qntP > qntO) entao
+					escreva("foi RPG (Jogo de Representação).");
+				senao
+					se (qntO > qntF e qntO > qntR e qntO > qntM e qntO > qntP) entao
+						escreva("foi MMO (Multijogador Online Massivo).");
+					senao
+						escreva("não foi definido (empate).");
+					fimSe
+				fimSe
+			fimSe
+		fimSe
+	fimSe
+	escreval("");
+	escreval("----------------------------------------------------------------------------------");
+fimPrincipal
+
+funcao texto leValidaResponsavel ()
+	texto nome;
+	faca
+		escreva("Digite o nome do responsável da pesquisa: ");
+		leia(nome);
+	enquanto (tamanhoTexto(nome) == 0 ou comparaTexto(nome, " ") == 0);
+	nome = maiusculo(nome);
+	retorna nome;
+fimFuncao
+
+funcao inteiro leValidaIdade ()
+	inteiro idade;
+	faca
+		escreva("Digite a idade do entrevistado: ");
+		leia(idade);
+		se (idade < 4 ou idade > 120) entao
+			escreval("Idade inválida. O valor não pode ser menor que 4 ou maior que 120.");
+		fimSe
+	enquanto (idade < 4 ou idade > 120);
+	retorna idade;
+fimFuncao
+
+funcao texto leValidaEstiloJogo (ref inteiro qntF, ref inteiro qntR, ref inteiro qntM, ref inteiro qntP, ref inteiro qntO)
+	caracter codigo;
+
+	escreval("Estilos de jogo");
+	escreval("");
+	escreval("F ) FPS - Tiro em Primeira Pessoa");
+	escreval("R ) RTS - Estratégia em Tempo Real");
+	escreval("M ) MOBA - Arena de Batalha Multijogador Online");
+	escreval("P ) RPG - Jogo de Representação");
+	escreval("O ) MMO - Multijogador Online Massivo");
+	escreval("");
+	faca
+		escreva("Qual o seu estilo de jogo preferido? ");
+		leiaCaracter(codigo);
+		codigo = maiusculoCaracter(codigo);
+	enquanto (codigo != 'F' e codigo != 'R' e codigo != 'M' e codigo != 'P' e codigo != 'O');
+
+	escolha (codigo)
+		caso 'F'
+			qntF = qntF + 1;
+			retorna "FPS";
+			interrompa;
+		caso 'R'
+			qntR = qntR + 1;
+			retorna "RTS";
+			interrompa;
+		caso 'M'
+			qntM = qntM + 1;
+			retorna "MOBA";
+			interrompa;
+		caso 'P'
+			qntP = qntP + 1;
+			retorna "RPG";
+			interrompa;
+		caso 'O'
+			qntO = qntO + 1;
+			retorna "MMO";
+			interrompa;
+	fimEscolha
+fimFuncao

@@ -1,0 +1,154 @@
+algoritmo Q3;
+// Síntese
+//  Objetivo:	Desenvolver um algoritmo que cadastre os dados recebidos da Polícia Federal e produza um conjunto de informações para auxiliar os componentes da CPI.
+//  Entrada:	Quantidade de pessoas, identificação do investigado, valor recebido pelo investigado.
+//  Saída:		Uma tabela, totalmente alinhada, conforme modelo a seguir, tendo na primeira linha a identificação dos dados, e a partir da segunda linha a identificação de cada investigado, o valor recebido e a classificação . Também deverá ser apresentado os totais para cada tipo de classificação seguido da soma de todos os valores investigados.
+
+
+principal
+	// Declarações
+	caracter opcao;
+	inteiro confirmaCompara, idInvestiga[151], classificacao[151], quantPessoas, ctrl, qntIni, qntSV, qntSaf;
+	real valoresInvestiga[151], valTotal, valCheck;
+
+	confirmaCompara = 0;
+	qntIni = 0;
+	qntSV = 0;
+	qntSaf = 0;
+	valTotal = 0;
+	// Instruções
+	para (ctrl de 0 ate 150 passo 1) faca
+		idInvestiga[ctrl] = 0;
+	fimPara
+	
+	faca
+		escreva("Digite quantas pessoas foram investigadas: ");
+		leia(quantPessoas);
+	enquanto (quantPessoas < 2 ou quantPessoas > 150);
+
+	limpaTela();
+
+	para (ctrl de 1 ate quantPessoas passo 1) faca
+		idInvestiga[ctrl] = leValidaId(ctrl, idInvestiga, quantPessoas);
+		valoresInvestiga[ctrl] = leValidaValor(ctrl);
+		classificacao[ctrl] = classificaCPI(valoresInvestiga[ctrl]);
+		valTotal = valTotal + valoresInvestiga[ctrl];
+	fimPara
+
+	limpaTela();
+
+	escreval("Identificação	Valor (R$)	Classificação");
+	escreval("---------------------------------------------------------------------");
+	para (ctrl de 1 ate quantPessoas passo 1) faca
+		escreva(idInvestiga[ctrl], "		", valoresInvestiga[ctrl]:9:2, "	");
+		se (classificacao[ctrl] == 0) entao
+			escreva("Iniciante");
+			qntIni = qntIni + 1;
+			escreval("");
+		fimSe
+		se (classificacao[ctrl] == 1) entao
+			escreva("Sem Vergonha");
+			qntSV = qntSV + 1;
+			escreval("");
+		fimSe
+		se (classificacao[ctrl] == 2) entao
+			escreva("Safado");
+			qntSaf = qntSaf + 1;
+			escreval("");
+		fimSe
+	fimPara
+	escreval("---------------------------------------------------------------------");
+	escreval("Resumo");
+	escreval("---------------------------------------------------------------------");
+	escreval(qntIni, " = Iniciante");
+	escreval(qntSV, " = Sem Vergonha");
+	escreval(qntSaf, " = Safado");
+	escreval("Total de valores recebidos: R$", valTotal::2);
+	escreval("");
+
+	faca
+		escreva("Deseja verificar se existe um investigado com valor recebido maior ou igual a um valor específico? (S/N): ");
+		leiaCaracter(opcao);
+		opcao = maiusculoCaracter(opcao);
+	enquanto (opcao != 'S' e opcao != 'N');
+
+	se (opcao == 'S') entao
+		escreva("Digite um valor para ser verificado: R$");
+		leia(valCheck);
+		limpaTela();
+		escreval("---------------------------------------------------------------------");
+		escreval("Resultados da comparação");
+		escreval("---------------------------------------------------------------------");
+		para (ctrl de 1 ate quantPessoas passo 1) faca
+			se (valCheck <= valoresInvestiga[ctrl]) entao
+				confirmaCompara = 1;
+			fimSe
+		fimPara
+		se (confirmaCompara == 0) entao
+			escreval("Nenhum investigado recebeu valor >= que R$ ", valCheck::2);
+		senao
+			escreval("Identificação	Valor (R$)	Classificação");
+			escreval("---------------------------------------------------------------------");
+			para (ctrl de 1 ate quantPessoas passo 1) faca
+				se (valCheck <= valoresInvestiga[ctrl]) entao
+					escreva(idInvestiga[ctrl], "		", valoresInvestiga[ctrl]:9:2, "	");
+					se (classificacao[ctrl] == 0) entao
+						escreva("Iniciante");
+						escreval("");
+					fimSe
+					se (classificacao[ctrl] == 1) entao
+						escreva("Sem Vergonha");
+						escreval("");
+					fimSe
+					se (classificacao[ctrl] == 2) entao
+						escreva("Safado");
+						escreval("");
+					fimSe
+				fimSe
+			fimPara
+		fimSe
+	fimSe
+fimPrincipal
+
+funcao inteiro leValidaId (inteiro i, inteiro idInv[], inteiro qntPes)
+	inteiro id, ctrl;
+
+	faca
+		escreva("Digite o número de identificação do investigado Nº ", i, ": ");
+		leia(id);
+	enquanto (id < 1000);
+
+	para (ctrl de 1 ate qntPes passo 1) faca
+		se (id == idInv[ctrl]) entao
+			faca
+				escreva("Redigite o número de identificação do investigado Nº ", i, ": ");
+				leia(id);
+			enquanto (id < 1000);
+		fimSe
+	fimPara
+
+	retorna id;
+fimFuncao
+
+funcao real leValidaValor (inteiro i)
+	real valor;
+
+	faca
+		escreva("Digite o valor em reais recebido pelo investigado Nº ", i, ": R$");
+		leia(valor);
+	enquanto (valor < 0);
+	
+	retorna valor;
+fimFuncao
+
+funcao inteiro classificaCPI (real valor)
+	se (valor <= 10000.00) entao
+		retorna 0;
+	senao
+		se (valor > 10000.00 e valor  <= 50000.00) entao
+			retorna 1;
+		senao
+			retorna 2;
+		fimSe
+	fimSe
+fimFuncao

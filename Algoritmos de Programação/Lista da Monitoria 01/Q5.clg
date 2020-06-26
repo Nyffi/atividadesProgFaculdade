@@ -1,0 +1,55 @@
+algoritmo Q5;
+// Síntese
+//  Objetivo:  Desenvolver um algoritmo que solicitará a uma única pessoa da família a quantidade de KWh que a família consome por mês (valor real) e identificará a sua categoria de consumo, respeitando as definições da tabela.
+//  Entrada :	Quantidade de kWh, mes e ano.
+//  Saída   :	O consumo informado pela pessoa, a classificação da família por extenso, o mês e ano da pesquisa, além de indicar se o ano informado é ou não bissexto.
+
+
+principal
+	// Declarações
+	real kwh;
+	inteiro mes, ano;
+	texto categoria;
+	logico bissexto;
+	// Instruções
+	escreva ("Insira o mês em que a pesquisa foi feita (1 a 12): ");
+	leia(mes);
+	escreva ("Insira o ano em que a pesquisa foi feita: ");
+	leia(ano);
+	escreva ("Quantos kWh são consumidos mensalmente? ");
+	leia(kwh);
+
+	se (kwh >= 0 e ano >= 0 e mes > 0 e mes <= 12) entao
+		se (ano mod 400 == 0 ou (ano mod 4 == 0 e ano mod 100 != 0)) entao
+			bissexto = verdadeiro;
+		senao
+			bissexto = falso;
+		fimSe
+		
+		se (kwh <= 30) entao
+			categoria = "BAIXO";
+		senao
+			se (kwh > 31 e kwh <= 100) entao
+				categoria = "NORMAL";
+			senao
+				se (kwh > 100 e kwh <= 220) entao
+					categoria = "ALTO";
+				senao
+					se (kwh > 220) entao
+						categoria = "EXAGERADO";
+					fimSe
+				fimSe
+			fimSe
+		fimSe
+		limpaTela();
+		escreval("Consumo mensal: ", kwh, "kWh - Categoria:  ", categoria);
+		escreval("Data da pesquisa: ", mes, "/", ano);
+		se (bissexto == verdadeiro) entao
+			escreval ("O ano é bissexto.");
+		senao
+			escreval ("O ano não é bissexto.");
+		fimSe
+	senao
+		escreva("Informação inválida. Verifique se o consumo em kWh não é negativo, se o mes é entre 1 e 12 e se o ano não é negativo e tente de novo.");
+	fimSe
+fimPrincipal

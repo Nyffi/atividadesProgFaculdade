@@ -1,0 +1,62 @@
+algoritmo Q1;
+// Síntese
+//  Objetivo:  mostrar a quantidade total de estabelecimentos investigados e o total de focos, mostrar em uma tabela a quantidade de pessoas e de focos encontrados e um valor medio de pessoas que vivem em cada estabelecimento.
+//  Entrada :	nome da cidade, quantidade de estabelecimentos, numero de pessoas e de focos.
+//  Saída   :	quantidade total de estabelecimentos e de pessoas que vivem neles, tabela com quantas pessoas vivem em cada estabelecimento e quantidade de focos encontrados, valor medio de pessoas nos estabelecimentos investigados.
+
+
+principal
+	// Declarações
+
+	texto cidade;
+	inteiro quantidade, ctrl, quantPessoas[101], quantFoco[101], quantTotal, mediaTotal, quantEstabAcimaMedia;
+
+	quantTotal = 0;
+	mediaTotal = 0;
+	quantEstabAcimaMedia = 0;
+	// Instruções
+	faca 
+		escreva ("Digite o nome da cidade: ");
+		leia(cidade);
+	enquanto (tamanhoTexto(cidade) == 0 ou comparaTexto(cidade, " ") == 0);		
+	
+	faca 
+		escreva ("Digite quantos estabelecimentos serao visitados: ");
+		leia (quantidade);
+	enquanto (quantidade < 5 ou quantidade > 100);	
+
+	para (ctrl de 1 ate quantidade passo 1) faca
+		faca
+			escreva ("Digite a quantidade de focos de dengue que foram encontrados no estabelecimento No ", ctrl, ": ");
+			leia(quantFoco[ctrl]);
+		enquanto (quantFoco[ctrl] < 0);	
+
+		faca
+			escreva ("Digite a quantidade de pessoas que vivem no estabelecimento No ", ctrl, ": ");
+			leia (quantPessoas[ctrl]);
+		enquanto (quantPessoas[ctrl] <= 0);
+		
+		quantTotal = quantTotal + quantPessoas[ctrl];
+			
+	fimPara	
+
+	mediaTotal = (quantTotal / quantidade);
+	limpaTela();
+	
+	escreva ("Cidade: ", cidade);
+	escreval ("");
+	escreval ("Qnt. total de estabelecimentos investigados: ", quantidade, "	Total de pessoas que vivem nestes estabelecimentos: ", quantTotal);
+	escreval ("");
+	escreval ("------------------------------------------");
+	escreval (" Qnt. de pessoas  |  No. de focos ");
+	para (ctrl de 1 ate quantidade passo 1) faca
+		escreval ("	  ",quantPessoas[ctrl], "      |   ", quantFoco[ctrl]);
+
+		se (quantPessoas[ctrl] > mediaTotal) entao
+			quantEstabAcimaMedia = quantEstabAcimaMedia + 1;
+		fimSe
+	fimPara	
+	escreval ("------------------------------------------");
+	escreval ("Media da quantidade de pessoas que vivem nos estabelecimentos: ", mediaTotal);
+	escreval ("Quantidade de estabelecimentos com quantidade de pessoas vivenco acima da média: ", quantEstabAcimaMedia);
+fimPrincipal

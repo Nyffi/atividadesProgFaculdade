@@ -1,0 +1,124 @@
+algoritmo Q2;
+// Síntese
+//  Objetivo:	Elaborar um algoritmo para uma pesquisa que tem como objetivo saber o sexo, idade e o local da ultima viagem fora do país dentro de determinados continentes.
+//  Entrada:	Sexo, idade, local da última viagem fora do país, quantidade de pessoas.
+//  Saída:		Sexo, idade, logal da ultima viagem das pessoas que possuem idade menor que a média de todas as idades, média de todas as idade cadastradas, quantidade de pessoas que visitou cada continente, quantidade de pessoas que não sairam do brasil.
+
+
+principal
+	// Declarações
+	caracter sexo[501], viagem[501];
+	inteiro quantEU, quantAS, quantAN, quantNaoViajou, ctrl, quantPessoas, idade[501];
+	real mediaIdade;
+
+	quantEU = 0;
+	quantAS = 0;
+	quantAN = 0;
+	quantNaoViajou = 0;
+	mediaIdade = 0;
+	// Instruções
+	quantPessoas = validaPessoas();
+
+	para (ctrl de 1 ate quantPessoas passo 1) faca
+		validaSexo (sexo, ctrl);
+		validaIdade (idade, ctrl);
+		mediaIdade = mediaIdade + idade[ctrl];
+		validaViagem (viagem, ctrl);
+	fimPara
+	mediaIdade = mediaIdade / quantPessoas;
+
+	limpaTela();
+
+	escreval("-----------------------------------------------------------------------");
+	escreval("Tabela de pessoas com idade menor que a média");
+	escreval("-----------------------------------------------------------------------");
+	escreval("Sexo	Idade	Local de Viagem");
+	escreval("-----------------------------------------------------------------------");
+
+	para (ctrl de 1 ate quantPessoas passo 1) faca
+		se (idade[ctrl] < mediaIdade) entao
+			escreva(sexo[ctrl], "	", idade[ctrl], "	");
+			se (viagem[ctrl] == 'E') entao
+				escreva("Europa");
+				escreval("");
+			fimSe
+			se (viagem[ctrl] == 'S') entao
+				escreva("Ásia");
+				escreval("");
+			fimSe
+			se (viagem[ctrl] == 'A') entao
+				escreva("América do Norte");
+				escreval("");
+			fimSe
+			se (viagem[ctrl] == 'N') entao
+				escreva("N/A");
+				escreval("");
+			fimSe
+		fimSe
+		se (viagem[ctrl] == 'E') entao
+			quantEU = quantEU + 1;
+		fimSe
+		se (viagem[ctrl] == 'S') entao
+			quantAS = quantAS + 1;
+		fimSe
+		se (viagem[ctrl] == 'A') entao
+			quantAN = quantAN + 1;
+		fimSe
+		se (viagem[ctrl] == 'N') entao
+			quantNaoViajou = quantNaoViajou + 1;
+		fimSe
+	fimPara
+	escreval("-----------------------------------------------------------------------");
+	visaoFinal (quantEU, quantAS, quantAN, quantNaoViajou);
+fimPrincipal
+
+funcao inteiro validaPessoas ()
+	inteiro qntPes;
+
+	faca
+		escreva("Digite quantas pessoas serão entrevistadas: ");
+		leia(qntPes);
+	enquanto (qntPes < 0 ou qntPes > 500);
+
+	retorna qntPes;
+fimFuncao
+
+procedimento validaSexo (caracter sexo[], inteiro i)
+	faca
+		escreva("Digite o seu sexo (M/F): ");
+		leiaCaracter(sexo[i]);
+		sexo[i] = maiusculoCaracter(sexo[i]);
+	enquanto (sexo[i] != 'M' e sexo[i] != 'F');
+fimProcedimento
+
+procedimento validaIdade (inteiro idade[], inteiro i)
+	faca
+		escreva("Digite sua idade: ");
+		leia(idade[i]);
+	enquanto (idade[i] < 0);
+fimProcedimento
+
+procedimento validaViagem (caracter viagem[], inteiro i)
+	escreval("Escolha qual dos continentes você viajou recentemente: ");
+	escreval("");
+	escreval("-----------------------------------------------------------------------");
+	escreval("");
+	escreval("E ) Europa");
+	escreval("S ) Ásia");
+	escreval("A ) América do Norte");
+	escreval("N ) Nunca saiu do país");
+	escreval("");
+	escreval("-----------------------------------------------------------------------");
+	faca
+		escreva("Digite sua escolha: ");
+		leiaCaracter(viagem[i]);
+		viagem[i] = maiusculoCaracter(viagem[i]);
+	enquanto (viagem[i] != 'E' e viagem[i] != 'S' e viagem [i] != 'A' e viagem[i] != 'N');
+fimProcedimento
+
+procedimento visaoFinal (inteiro qntEU, inteiro qntAS, inteiro qntAN, inteiro qntNV)
+	escreval("Qnt. de pessoas que visitaram a Europa: ", qntEU);
+	escreval("Qnt. de pessoas que visitaram a Ásia: ", qntAS);
+	escreval("Qnt. de pessoas que visitaram a América do Norte: ", qntAN);
+	escreval("Qnt. de pessoas que não sairam do Brasil: ", qntNV);
+fimProcedimento

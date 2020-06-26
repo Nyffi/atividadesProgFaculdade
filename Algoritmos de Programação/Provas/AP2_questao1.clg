@@ -1,0 +1,113 @@
+// Nome: Paulo César		Questão: 01
+algoritmo AP2_questao1;
+// Síntese
+//  Objetivo:  	Elaborar um algoritmo para ajudar os professores de "Algoritmos de Programação" a avaliarem seus estudandes.
+//  Entrada :	Notas das três avaliações presenciais, das três avaliações virtuais, da avaliação prática, do trabalho final e das atividades supervisionadas.
+//  Saída   :	Nota final e aviso se o aluno passou ou não da matéria.
+
+principal
+	// Declarações
+	inteiro ctrl;
+	caracter opcao;
+	real nota1, nota2, nota3, notaFinal, avPres[3], avVirt[3], avPrat, trabFinal, ativSup;
+	logico continuar;
+	// Instruções
+	faca
+		para (ctrl de 1 ate 3 passo 1) faca
+			escreva("Digite a nota da Avaliação Presencial Nº ", ctrl, ": ");
+			leia(avPres[ctrl - 1]);
+			avPres[ctrl - 1] = leValidaNota(avPres[ctrl - 1]);
+			escreva("Digite a nota da Avaliação Virtual Nº ", ctrl, ": ");
+			leia(avVirt[ctrl - 1]);
+			avVirt[ctrl - 1] = leValidaNota(avVirt[ctrl - 1]);
+		fimPara
+		escreva("Digite a nota da Avaliação Prática: ");
+		leia(avPrat);
+		avPrat = leValidaNota(avPrat);
+		escreva("Digite a nota do Trabalho Final: ");
+		leia(trabFinal);
+		trabFinal = leValidaNota(trabFinal);
+		escreva("Digite a nota da Avaliação Supervisionada: ");
+		leia(ativSup);
+		ativSup = leValidaNota(ativSup);
+
+		nota1 = calculaN1(avPres[0], avVirt[0], avPres[1], avVirt[1]);
+		nota1 = leValidaNota(nota1);
+		nota2 = calculaN2(avPres[2], avVirt[2]);
+		nota2 = leValidaNota(nota2);
+		nota3 = calculaN3(avPrat, trabFinal, ativSup);
+		nota3 = leValidaNota(nota3);
+		notaFinal = calculaNF(nota1, nota2, nota3);
+		
+		mostraResultado(notaFinal);
+		escreval("");
+		escreva("Deseja calcular a nota de outro aluno? (S/N) ");
+		leiaCaracter(opcao);
+		enquanto (opcao != 's' e opcao != 'S' e opcao != 'n' e opcao != 'N') faca
+			escreval("Opção inválida. Escolha entre as opções Sim (S) e Não (N).");
+			escreva("Deseja calcular a nota de outro aluno? (S/N) ");
+			leiaCaracter(opcao);
+		fimEnquanto
+		opcao = maiusculoCaracter(opcao);
+		se (opcao == 'S') entao
+			continuar = verdadeiro;
+		senao
+			continuar = falso;
+		fimSe
+	enquanto (continuar == verdadeiro);
+fimPrincipal
+
+funcao real leValidaNota (real nota)
+	se (nota >= 0 e nota <= 10) entao
+		retorna nota;
+	senao
+		se (nota < 0) entao
+			retorna 0;
+		senao
+			se (nota > 10) entao
+				retorna 10;
+			fimSe
+		fimSe
+	fimSe
+fimFuncao
+
+funcao real calculaN1 (real avPres1, real avVirt1, real avPres2, real avVirt2)
+	real resultado, prova1, prova2;
+
+	prova1 = avPres1 + 0.1 * avVirt1;
+	prova2 = avPres2 + 0.1 * avVirt2;
+	resultado = 0.4 * prova1 + 0.6 * prova2;
+	retorna resultado;
+fimFuncao
+
+funcao real calculaN2 (real avPres3, real avVirt3)
+	real prova3;
+
+	prova3 = avPres3 + 0.1 * avVirt3;
+	retorna prova3;
+fimFuncao
+
+funcao real calculaN3 (real avPrat, real trabFinal, real ativSup)
+	real resultado;
+
+	resultado = 0.5 * avPrat + 0.3 * trabFinal + 0.2 * ativSup;
+	retorna resultado;
+fimFuncao
+
+funcao real calculaNF (real n1, real n2, real n3)
+	real resultado;
+
+	resultado = (n1 + n2 + n3) / 3;
+	retorna resultado;
+fimFuncao
+
+procedimento mostraResultado (real notaFinal)
+	limpaTela();
+	escreval("Nota final do aluno: ", notaFinal::1);
+
+	se (notaFinal >= 7) entao
+		escreval("Resultado final: APROVADO");
+	senao
+		escreval("Resultado final: REPROVADO");
+	fimSe
+fimProcedimento

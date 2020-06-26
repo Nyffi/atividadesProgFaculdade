@@ -1,0 +1,89 @@
+algoritmo Q2;
+// Síntese
+//  Objetivo:  	Desenvolver um algoritmo que controle as informações de um campeonato de futebol de salão, obtendo de cada time inscrito a idade e o peso de cada jogador.
+//  Entrada :	Quantidade de times, quantidade de jogadores em cada time, juntamente com a idade e o peso de cada jogador.
+//  Saída   :	Média das idades dos jogadores do time, média do peso dos jogadores acima de 25 anos, quantidade de jogadores menores de idade e quantidade e porcentagem de jogadores com mais de 80 quilos.
+
+
+principal
+	// Declarações
+	real pesoJog, mediaPesoAcima25Anos, pctJogAcima80Kg;
+	inteiro idadeJog, quantTime, quantJog, quantJogTotal, mediaIdade, quantJogMenorIdade, quantJogAcima80Kg, quantJogAcima25Anos, ctrl, ctrl2;
+
+	mediaPesoAcima25Anos = 0;
+	mediaIdade = 0;
+	quantJogMenorIdade = 0;
+	quantJogAcima80Kg = 0;
+	quantJogAcima25Anos = 0;
+	quantJogTotal = 0;
+	// Instruções
+	escreva("Digite quantos times serão inscritos (min. 3, máx. 9): ");
+	leia(quantTime);
+	enquanto (quantTime < 3 ou quantTime > 9) faca
+		escreval("Valor inválido. Deve ter, no mímino, 3 times e no máximo, 9 times inscritos.");
+		escreva("Digite quantos times serão inscritos (min. 3, máx. 9): ");
+		leia(quantTime);
+	fimEnquanto
+	limpaTela();
+	para (ctrl de 1 ate quantTime passo 1) faca
+		escreva("Time ", ctrl, " - Quantos jogadores serão inscritos? (Min. 6, Máx 11): ");
+		leia(quantJog);
+		enquanto (quantJog < 6 ou quantJog > 11) faca
+			escreval("Valor inválido. Cada time deve ter no mínimo 6 jogadores e no máximo 11.");
+			escreva("Quantos jogadores serão inscritos? (Min. 6, Máx 11): ");
+			leia(quantJog);
+		fimEnquanto
+		quantJogTotal = quantJogTotal + quantJog;
+		mediaIdade = 0;
+		mediaPesoAcima25Anos = 0;
+		quantJogAcima25Anos = 0;
+		para (ctrl2 de 1 ate quantJog passo 1) faca
+			escreva("Digite o peso do jogador ", ctrl2, ": ");
+			leia(pesoJog);
+			enquanto (pesoJog < 0) faca
+				escreval("Valor inválido. O peso deve ser acima de zero.");
+				escreva("Digite o peso do jogador ", ctrl2, ": ");
+				leia(pesoJog);
+			fimEnquanto
+			escreva("Digite a idade do jogador ", ctrl2, ": ");
+			leia(idadeJog);
+			enquanto (idadeJog < 0) faca
+				escreval("Valor inválido. A idade deve ser acima de zero.");
+				escreva("Digite a idade do jogador ", ctrl2, ": ");
+				leia(idadeJog);
+			fimEnquanto
+			mediaIdade = mediaIdade + idadeJog;
+			se (idadeJog > 25) entao
+				mediaPesoAcima25Anos = mediaPesoAcima25Anos + pesoJog;
+				quantJogAcima25Anos = quantJogAcima25Anos + 1;
+			fimSe
+			se (idadeJog < 18) entao
+				quantJogMenorIdade = quantJogMenorIdade + 1;
+			fimSe
+			se (pesoJog > 80) entao
+				quantJogAcima80Kg = quantJogAcima80Kg + 1;
+			fimSe
+		fimPara
+		se (mediaIdade > 0) entao
+			mediaIdade = mediaIdade / quantJog;
+		fimSe
+		se (mediaPesoAcima25Anos > 0) entao
+			mediaPesoAcima25Anos = mediaPesoAcima25Anos / quantJogAcima25Anos;
+		fimSe
+		mostraInfoTime(mediaIdade, mediaPesoAcima25Anos, ctrl);
+	fimPara
+	pctJogAcima80Kg = (quantJogAcima80Kg / quantJogTotal) * 100;
+	mostraInfoCamp(quantJogMenorIdade, quantJogAcima80Kg, pctJogAcima80Kg, quantJogTotal);
+fimPrincipal
+
+procedimento mostraInfoTime (inteiro mediaIdade, real mediaPeso, inteiro numTime)
+	limpaTela();
+	escreval("Média das idades dos jogadores do time ", numTime, ": ", mediaIdade);
+	escreval("Média do peso dos jogadores acima de 25 anos do time ", numTime, ": ", mediaPeso::1);
+	escreval("");
+fimProcedimento
+
+procedimento mostraInfoCamp (inteiro qntJogMenor18, inteiro qntJogAcima80, real pctJogAcima80, inteiro qntJogTotal)
+	escreval(qntJogMenor18, " jogadores são menores de idade (abaixo de 18 anos).");
+	escreval(pctJogAcima80::1, "% (", qntJogAcima80, " de ", qntJogTotal, ") dos jogadores tem mais de 80 quilos.");
+fimProcedimento

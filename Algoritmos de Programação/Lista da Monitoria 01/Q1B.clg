@@ -1,0 +1,13 @@
+algoritmo Q1B;
+// Síntese
+//  Objetivo:  Criar um algoritmo que registre o ano e a construtora de até 200 apartamentos e mostre a quantidade de imóveis cadastrados e qual o apartamento mais novo que está no cadastro, além de apresentar a quantidade de imóveis que possui valor superior a 500 mil reais e está disponível para venda.
+//  Entrada :	Ano e construtora de até 200 apartamentos.
+//  Saída   :	Quantidade de imóveis cadastrados, qual o apartamento mais novo e quantos apartamentos com valor acima de 500 mil reais estão disponívels para venda na imobiliária.
+
+
+principal
+	// Declarações
+
+	// Instruções
+
+fimPrincipal

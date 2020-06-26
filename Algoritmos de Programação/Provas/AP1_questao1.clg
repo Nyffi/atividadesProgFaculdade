@@ -1,0 +1,94 @@
+//	Nome: Paulo César		Questão: 01
+algoritmo AP1_Q1;
+// Síntese
+//  Objetivo:  	Desenvolver um algoritmo que verifica qual é o aplicativo de entrega de comida que os estudantes da Universidade Católica de Brasília mais gostam.
+//  Entrada :	Nome do responsável da pesquisa, número de estudantes que serão entrevistados, o voto de cada estudante.
+//  Saída   :	Nome do responsável da pesquisa, quantidade de votos que cada aplicativo obteve na pesquisa e o nome por extenso do aplicativo mais votado.
+
+
+principal
+	// Declarações
+	caracter opcao;
+	texto nomePesq;
+	inteiro quantAluno, votosI, votosU, votosR, ctrl;
+	// Instruções
+	votosI = 0;
+	votosU = 0;
+	votosR = 0;
+
+	faca
+		escreva("Digite o nome do pesquisador: ");
+		leia(nomePesq);
+		se (comparaTexto(nomePesq, "") == 0) entao
+			escreval("Por favor, digite um nome válido.");
+		fimSe
+	enquanto (comparaTexto(nomePesq, "") == 0);
+
+	faca
+		escreva("Digite quantos estudantes serão entrevistados: ");
+		leia(quantAluno);
+		se (quantAluno <= 2) entao
+			escreval("A pesquisa só pode ser feita com uma quantidade MAIOR que 2 estudantes.");
+		fimSe
+	enquanto (quantAluno <= 2);
+
+	para (ctrl de 1 ate quantAluno passo 1) faca
+		escreval("- - - - - P E S Q U I S A - - - - -");
+		escreval("");
+		escreval("I - iFood");
+		escreval("U - UberEats");
+		escreval("R - Rappi");
+		escreval("");
+		escreval("Estudante Nº ",ctrl,", escolha o aplicativo de entrega de comida de sua preferência");
+		escreval("Sua escolha: ");
+		leiaCaracter(opcao);
+		enquanto (opcao != 'i' e opcao != 'I' e opcao != 'u' e opcao != 'U' e opcao != 'r' e opcao != 'R') faca
+			escreval("Por favor, selecione uma das opções da lista");
+			escreva("Sua escolha: ");
+			leiaCaracter(opcao);
+		fimEnquanto
+		escolha(opcao)
+		caso 'i'
+		caso 'I'
+			votosI = votosI + 1;
+			limpaTela();
+			interrompa;
+		caso 'u'
+		caso 'U'
+			votosU = votosU + 1;
+			limpaTela();
+			interrompa;
+		caso 'r'
+		caso 'R'
+			votosR = votosR + 1;
+			limpaTela();
+			interrompa;
+		fimEscolha
+	fimPara
+
+	escreval("- - - - - - - - - - - - - - -");
+	escreval("Nome do pesquisador: ", nomePesq);
+	escreval("- - - - - - - - - - - - - - -");
+	escreval("Votos para iFood: ", votosI);
+	escreval("- - - - - - - - - - - - - - -");
+	escreval("Votos para UberEats: ", votosU);
+	escreval("- - - - - - - - - - - - - - -");
+	escreval("Votos para Rappi: ", votosR);
+	escreval("- - - - - - - - - - - - - - -");
+	escreval("- - - - - - - - - - - - - - -");
+	se (votosI > votosU e votosI > votosR) entao
+		escreval("Aplicativo mais votado: iFood");
+	senao
+		se(votosU > votosI e votosU > votosR) entao
+			escreval("Aplicativo mais votado: UberEats");
+		senao
+			se(votosR > votosI e votosR > votosU) entao
+				escreval("Aplicativo mais votado: Rappi");
+			senao
+				se(votosI == votosU ou votosU == votosR ou votosR == votosI) entao
+					escreval ("Não foi possível determinar um aplicativo, pois pelo menos 2 deles empataram!");
+				fimSe
+			fimSe
+		fimSe
+	fimSe
+fimPrincipal

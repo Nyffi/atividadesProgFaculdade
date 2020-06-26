@@ -1,0 +1,75 @@
+algoritmo Q3;
+// Síntese
+//  Objetivo:  
+//  Entrada :
+//  Saída   :
+
+
+principal
+	// Declarações
+	inteiro quantJog, numJog, idadeJog, controle, idadeJovem, idadeVelho, numJovem, numVelho, mediaIdade;
+	logico jogsJovem, jogsVelho;
+
+	mediaIdade = 0;
+	idadeJovem = 999;
+	idadeVelho = 0;
+	jogsJovem = falso;
+	jogsVelho = falso;
+	// Instruções
+	escreva ("Digite a quantidade de jogadores do time: ");
+	leia (quantJog);
+
+	para (controle de 1 ate quantJog passo 1) faca
+		escreva ("Digite o número de jogador: ");
+		leia(numJog);
+		escreva ("Digite a idade do jogador: ");
+		leia(idadeJog);
+		mediaIdade = mediaIdade + idadeJog;
+
+		se(controle >= 2) entao
+			se(idadeJovem == idadeJog) entao
+				jogsJovem = verdadeiro;
+			fimSe
+			se(idadeVelho == idadeJog e idadeJovem != idadeVelho) entao
+				jogsVelho = verdadeiro;
+			fimSe
+		fimSe
+
+		se(idadeJog < idadeJovem) entao
+			idadeJovem = idadeJog;
+			numJovem = numJog;
+		fimSe
+		se(idadeJog > idadeVelho) entao
+			idadeVelho = idadeJog;
+			numVelho = numJog;
+		fimSe
+		se(controle == 1) entao
+			se(idadeJovem == idadeJog e idadeJovem != idadeVelho) entao
+				jogsJovem = verdadeiro;
+			fimSe
+			se(idadeVelho == idadeJog e idadeVelho != idadeJovem) entao
+				jogsVelho = verdadeiro;
+			fimSe
+		fimSe
+	fimPara
+
+	mediaIdade = mediaIdade / quantJog;
+
+	limpaTela();
+	se(idadeVelho != idadeJovem e numVelho != numJovem) entao
+		se(jogsJovem == verdadeiro) entao
+			escreval ("Dois ou mais jogadores são os mais jovens do time, com ", idadeJovem, " anos de idade.");
+		senao
+			escreval ("O jogador mais jovem do time é o número ", numJovem,", com ", idadeJovem," anos de idade.");
+		fimSe
+		se(jogsVelho == verdadeiro) entao
+			escreval ("Dois ou mais jogadores são os mais velhos do time, com ", idadeVelho, " anos de idade.");
+		senao
+			escreval ("O jogador mais velho do time é o número ", numVelho,", com ", idadeVelho," anos de idade.");
+		fimSe
+	senao
+		escreval ("Todos os jogadores tem a mesma idade de ", idadeJovem, " anos.");
+	fimSe
+
+	escreval ("A média de idade é de ", mediaIdade," anos de idade.");
+fimPrincipal

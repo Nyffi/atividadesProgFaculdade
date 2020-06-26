@@ -1,0 +1,13 @@
+algoritmo Q1A;
+// Síntese
+//  Objetivo:  Criar um algoritmo que armazene o cadastro de todas as seleções de futebol que já foram campeãs da Copa do Mundo e apresentar quantas copas já aconteceram (até 2018), além da quantidade de vezes que cada uma destas seleções foi campeã.
+//  Entrada :	Todas as seleções de futebol que já foram campeãs.
+//  Saída   :	Quantas copas já aconteceram até 2018, e a quantidade de vezes que cada seleção foi campeã.
+
+
+principal
+	// Declarações
+
+	// Instruções
+
+fimPrincipal

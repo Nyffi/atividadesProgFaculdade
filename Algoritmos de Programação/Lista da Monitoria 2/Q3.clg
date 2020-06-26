@@ -1,0 +1,127 @@
+algoritmo Q3;
+// Síntese
+//  Objetivo:  	Desenvolver um algoritmo que solicita o número de localidades, e pra cada localidade deverá ser solicitado o nome da localidade e a quantidade de focos do mosquito da dengue encontrada e se a construção era uma residência ou comércio. 
+//  Entrada :	Número de localidades, nome das localidades, quantidade de focos de mosquito da Dengue e se a construção era residência ou comércio.
+//  Saída   :	Quantidade de construções utilizadas como residência e comércio, quantidade média dos focos encontrados em todas as construções vistoriadas, a maior quantidade de focos encontradas em todas as construções juntamente com a localidade.
+
+
+principal
+	// Declarações
+	inteiro quantLocalidade, quantConstrucao, quantConstTotal, quantResidencia, quantComercio, quantFoco, quantMaiorFoco, mediaFoco, ctrl, ctrl2;
+	texto nomeLocalidade, nomeLocalMaiorFoco;
+	caracter construcao;
+	logico qntLoc, nomeLocalValido, qntConst, qntFoco, construcaoValida;
+
+	quantConstTotal = 0;
+	quantResidencia = 0;
+	quantComercio = 0;
+	quantMaiorFoco = 0;
+	mediaFoco = 0;
+	
+	// Instruções
+	faca
+		escreva("Insira a quantidade de localidades levantadas (acima ou igual à 3): ");
+		leia(quantLocalidade);
+		qntLoc = validaQuantLocal(quantLocalidade);
+	enquanto (qntLoc != verdadeiro);
+	para (ctrl de 1 ate quantLocalidade passo 1) faca
+		faca
+			escreval("");
+			escreva("Digite o nome da localidade: ");
+			leia(nomeLocalidade);
+			nomeLocalValido = validaNomeLocal(nomeLocalidade);
+		enquanto (nomeLocalValido != verdadeiro);
+		faca
+			escreval("");
+			escreva("Digite a quantidade de construções vistoriadas: ");
+			leia(quantConstrucao);
+			qntConst = validaQuantConst(quantConstrucao);
+		enquanto (qntConst != verdadeiro);
+		para (ctrl2 de 1 ate quantConstrucao passo 1) faca
+			faca
+				escreval("");
+				escreva("Digite a quantidade de focos do mosquito da Dengue foram encontradas (0 a 100): ");
+				leia(quantFoco);
+				qntFoco = validaQuantFoco(quantFoco);
+			enquanto (qntFoco != verdadeiro);
+			mediaFoco = mediaFoco + quantFoco;
+			faca
+				escreval("");
+				escreva("Escolha que tipo de construção foi vistoreada (R - Residência ou C - Comércio): ");
+				leiaCaracter(construcao);
+				construcaoValida = validaConstrucao(construcao);
+			enquanto (construcaoValida != verdadeiro);
+			escolha (construcao)
+				caso 'r'
+				caso 'R'
+					quantResidencia = quantResidencia + 1;
+					interrompa;
+				caso 'c'
+				caso 'C'
+					quantComercio = quantComercio + 1;
+					interrompa;
+			fimEscolha
+			quantConstTotal = quantConstTotal + 1;
+		fimPara
+		se (quantFoco >= quantMaiorFoco) entao
+			quantMaiorFoco = quantFoco;
+			nomeLocalMaiorFoco = nomeLocalidade;
+		fimSe
+	fimPara
+	mediaFoco = mediaFoco / quantConstTotal;
+	mostraResultado(quantConstrucao, quantResidencia, quantComercio, quantMaiorFoco, mediaFoco, nomeLocalMaiorFoco);
+fimPrincipal
+
+funcao logico validaQuantLocal(inteiro quantLocal)
+	se (quantLocal >= 3) entao
+		retorna verdadeiro;
+	senao
+		retorna falso;
+	fimSe
+fimFuncao
+
+funcao logico validaNomeLocal(texto nomeLocal)
+	se (comparaTexto(nomeLocal, "") == 0) entao
+		retorna falso;
+	senao
+		retorna verdadeiro;
+	fimSe
+fimFuncao
+
+funcao logico validaQuantConst(inteiro qntConst)
+	se (qntConst > 0) entao
+		retorna verdadeiro;
+	senao
+		retorna falso;
+	fimSe
+fimFuncao
+
+funcao logico validaQuantFoco(inteiro qntFoco)
+	se (qntFoco >= 0 e qntFoco <= 100) entao
+		retorna verdadeiro;
+	senao
+		retorna falso;
+	fimSe
+fimFuncao
+
+funcao logico validaConstrucao(caracter tipoConst)
+	se (tipoConst == 'r' ou tipoConst == 'R' ou tipoConst == 'c' ou tipoConst == 'C') entao
+		retorna verdadeiro;
+	senao
+		retorna falso;
+	fimSe
+fimFuncao
+
+procedimento mostraResultado(inteiro qntConst, inteiro qntResid, inteiro qntCom, inteiro qntMaiorFoco, inteiro mediaFoco, texto nomeLocalMaiorFoco)
+	limpaTela();
+	escreval("Quantidade total de residências: ", qntResid);
+	escreval("");
+	escreval("Quantidade total de comércios: ", qntCom);
+	escreval("");
+	escreval("");
+	escreval("Média dos focos do mosquito da Dengue encontrados em todas as construções vistoreadas: ", mediaFoco);
+	escreval("");
+	escreval("Maior quantidade de focos do mosquido da Dengue encontrada: ", qntMaiorFoco);
+	escreval("");
+	escreval("Localidade onde foi encontrado a maior quantidade de focos: ", nomeLocalMaiorFoco);
+fimProcedimento

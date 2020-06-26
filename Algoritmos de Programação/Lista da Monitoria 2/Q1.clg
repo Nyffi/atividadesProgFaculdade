@@ -1,0 +1,76 @@
+algoritmo Q1;
+// Síntese
+//  Objetivo:  	Elaborar um algoritmo para solicitar de cada funcionário a quantidade de peças fabricadas naquele mês e apresentar o seu salário.
+//  Entrada :	Quantidade de peças fabricadas.
+//  Saída   :	Salário (base + adicional).
+
+
+principal
+	// Declarações
+	caracter opcao;
+	inteiro pecas;
+	real valAdicional, salario;
+	logico continuar;
+
+	continuar = verdadeiro;
+	// Instruções
+	faca
+		escreva("Digite a quantidade de peças fabricadas: ");
+		leia(pecas);
+		valAdicional = validaQuantidade(pecas);
+		salario = calculaSalario(valAdicional);
+		mostraFinal(pecas, valAdicional, salario);
+		escreva("Deseja calcular o salário de outro funcionário? (S/N) : ");
+		leiaCaracter(opcao);
+		enquanto (opcao != 's' e opcao != 'S' e opcao != 'n' e opcao != 'N') faca
+			escreva("Opção inválida, escolha se deseja ou não continuar (S/N): ");
+			leiaCaracter(opcao);
+		fimEnquanto
+		escolha(opcao)
+			caso 's'
+			caso 'S'
+				continuar = verdadeiro;
+				interrompa;
+			caso 'n'
+			caso 'N'
+				continuar = falso;
+				interrompa;
+			outroCaso
+				escreva("Opção inválida, escolha se deseja ou não continuar (S/N): ");
+				leiaCaracter(opcao);
+		fimEscolha
+		
+	enquanto (continuar == verdadeiro);
+fimPrincipal
+
+funcao real validaQuantidade(inteiro quantPc)
+	real valAdic;
+	inteiro quant80;
+	se (quantPc <= 50) entao
+		retorna 0;
+	senao
+		se (quantPc > 50 e quantPc <= 80) entao
+			valAdic = 0.50 * quantPc;
+			retorna valAdic;
+		senao
+			quant80 = 80;
+			quantPc = quantPc - 80;
+			valAdic = (0.50 * quant80) + (0.75 * quantPc);
+			retorna valAdic;
+		fimSe
+	fimSe
+fimFuncao
+funcao real calculaSalario (real valAdic)
+	real salario;
+
+	salario = 600 + valAdic;
+	retorna salario;
+fimFuncao
+procedimento mostraFinal (inteiro quantPc, real valAdic, real salario)
+	limpaTela();
+	escreval("Quant. de peças fabricadas: ", quantPc);
+	escreval("Salário base: R$600.00");
+	escreval("Bônus de produtividade: ", valAdic::2);
+	escreval("Salário final: R$", salario::2);
+	escreval("");
+fimProcedimento

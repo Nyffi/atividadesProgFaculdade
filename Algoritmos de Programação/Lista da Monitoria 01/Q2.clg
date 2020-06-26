@@ -1,0 +1,21 @@
+algoritmo Q2;
+// Síntese
+//  Objetivo:  Desenvolver um algoritmo que calcule o juros do cheque especial durante um mês.
+//  Entrada :	Taxa de juros mensal e o valor da dívida.
+//  Saída   :	Total dos juros e novo valor total.
+
+
+principal
+	// Declarações
+	real jurosMes, valDivida, jurosTotal, valTotal;
+	// Instruções
+	escreva ("Digite o valor da dívida: ");
+	leia (valDivida);
+	escreva ("Digite a porcentagem do juros mensal: ");
+	leia (jurosMes);
+	jurosMes = jurosMes / 100;
+	jurosTotal = valDivida * jurosMes;
+	valTotal = valDivida + jurosTotal;
+	escreval ("Valor total da dívida: R$", valTotal);
+	escreval ("Valor do juros: R$", jurosTotal);
+fimPrincipal
