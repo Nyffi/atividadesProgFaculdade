@@ -1,7 +1,7 @@
 # Atividades de Programação da Faculdade
 Atividades velhas da faculdade de Engenharia de Software.
 
-Os códigos foram feitos em Portugol e/ou C.
+Os códigos foram feitos em Portugol, C e/ou Java.
 
 Não é garantido de todos os códigos serem totalmente funcionais.
 
